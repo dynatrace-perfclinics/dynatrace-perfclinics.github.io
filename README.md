@@ -1,2 +1,2 @@
-# dynatrace-perfclinic.github.io
-CodeLabs for Dynatrace Performance Clinics
+# dynatrace-perfclinics.github.io
+CodeLabs for https://dynatrace-perfclinics.github.io
