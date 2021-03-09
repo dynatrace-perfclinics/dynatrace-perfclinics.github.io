@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="The Perfomance Clinics CodeLabs provide a guided, tutorial-based hands-on learning experience. These labs will provide sessions that are presented by the Live Performance Clincis but are also feasible for self-learning. Please reach out to perfclinics@dynatrace.com if you have other questions.">
+<meta name="description" content="Dynatrace Sales Engineering Onboarding Codelabs.">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="generator" content="Dynatrace Perfomance Clinics Codelabs">
-<meta name="application-name" content="Dynatrace Perfomance Clinics Codelabs">
-<link rel="canonical" href="https://example.com/">
+<meta name="generator" content="Dynatrace Sales Engineering Onboarding">
+<meta name="application-name" content="Dynatrace Sales Engineering Onboarding">
+<link rel="canonical" href="https://example.com/onboarding/">
 <link rel="preconnect" href="https://www.google-analytics.com">
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -15,7 +15,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
     ga('send', 'pageview');
 </script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
-<title>Dynatrace Perfomance Clinics Codelabs</title>
+<title>Dynatrace Sales Engineering Onboarding</title>
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="import" href="/elements/elements.html">
 <style is="custom-style">
@@ -23,7 +23,7 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 </style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#455a64">
-<meta name="apple-mobile-web-app-title" content="Dynatrace Perfomance Clinics Codelabs">
+<meta name="apple-mobile-web-app-title" content="Dynatrace Sales Engineering Onboarding">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
@@ -35,9 +35,9 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
 <meta name="theme-color" content="#455a64">
 <meta name="og:type" property="og:type" content="website">
-<meta name="og:title" property="og:title" content="Dynatrace Perfomance Clinics Codelabs">
-<meta name="og:description" property="og:description" content="The Perfomance Clinics CodeLabs provide a guided, tutorial-based hands-on learning experience. These labs will provide sessions that are presented by the Live Performance Clincis but are also feasible for self-learning. Please reach out to perfclinics@dynatrace.com if you have other questions.">
-<meta name="og:url" property="og:url" content="https://example.com/">
+<meta name="og:title" property="og:title" content="Dynatrace Sales Engineering Onboarding">
+<meta name="og:description" property="og:description" content="Dynatrace Sales Engineering Onboarding Codelabs.">
+<meta name="og:url" property="og:url" content="https://example.com/onboarding/">
 <meta name="og:site_name" property="og:site_name" content="Codelabs">
 <meta name="og:determiner" property="og:determiner" content="the">
 <meta name="og:locale" property="og:locale" content="en_US">
@@ -48,12 +48,12 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 <meta name="og:image:height" property="og:image:height" content="1200">
 <meta name="og:image:alt" property="og:image:alt" content="Codelabs">
 <meta name="twitter:card" property="twitter:card" content="summary_large_image">
-<meta name="twitter:title" property="twitter:title" content="Dynatrace Perfomance Clinics Codelabs">
-<meta name="twitter:description" property="twitter:description" content="The Perfomance Clinics CodeLabs provide a guided, tutorial-based hands-on learning experience. These labs will provide sessions that are presented by the Live Performance Clincis but are also feasible for self-learning. Please reach out to perfclinics@dynatrace.com if you have other questions.">
+<meta name="twitter:title" property="twitter:title" content="Dynatrace Sales Engineering Onboarding">
+<meta name="twitter:description" property="twitter:description" content="Dynatrace Sales Engineering Onboarding Codelabs.">
 <meta name="twitter:image" property="twitter:image" content="/images/og-image.png">
-<meta name="twitter:url" property="twitter:url" content="https://example.com/">
+<meta name="twitter:url" property="twitter:url" content="https://example.com/onboarding/">
 </head>
-<body id="app" is="body-bind" class="loading fullbleed">
+<body id="app" is="body-bind" class="loading fullbleed view">
 <paper-header-panel id="main" mode="standard" main>
 <div id="mainToolbar" class="paper-header">
 <div class="site-width layout horizontal">
@@ -69,14 +69,14 @@ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 </div>
 </div>
 </div>
-<header id="banner" down$="[[_toBoolean(selectedFilter)]]">
+<header id="banner" down>
 <div class="site-width">
-<h2 class="banner-title">Welcome to Dynatrace Perfomance Clinics Codelabs!</h2>
-<div class="banner-description" data-filter-selected$="[[_toBoolean(selectedFilter)]]">
-<p class="banner-info">
-The Perfomance Clinics CodeLabs provide a guided, tutorial-based hands-on learning experience. These labs will provide sessions that are presented by the Live Performance Clincis but are also feasible for self-learning. Please reach out to perfclinics@dynatrace.com if you have other questions.
-<br>
-</p>
+<div class="banner-description">
+<img id="logo" src="/images//icons/dynatrace-gray_900.svg" alt="Event logo">
+<div class="banner-meta">
+<h3>Dynatrace Sales Engineering Onboarding</h3>
+<p>Dynatrace Sales Engineering Onboarding Codelabs.</p>
+</div>
 </div>
 </div>
 </header>
@@ -90,28 +90,6 @@ The Perfomance Clinics CodeLabs provide a guided, tutorial-based hands-on learni
 </paper-tabs>
 </div></div>
 <card-sorter id="cards" class="site-width">
-<a href="/codelabs/why-devs-love-dynatrace-1/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-codelevel" data-category="codelevel,cicd,qualitygates" data-title="Why Devs Love Dynatrace - Episode 1" data-duration="10" data-updated="2021-03-09T11:28:43+01:00" data-tags="codelevel" data-pin="">
-<div class="description">Why Devs Love Dynatrace - Episode 1</div>
-<div class="card-duration">
-<span>10 min </span>
-<span>Updated Mar 9, 2021</span>
-</div>
-<div class="card-footer">
-<div class="category-icon codelevel-icon"></div>
-<paper-button class="codelevel-bg">Start</paper-button>
-</div>
-</a>
-<a href="/codelabs/why-devs-love-dynatrace-2/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-codelevel" data-category="codelevel,cicd,qualitygates" data-title="Why Devs Love Dynatrace - Episode 2" data-duration="10" data-updated="2021-03-09T11:28:35+01:00" data-tags="codelevel" data-pin="">
-<div class="description">Why Devs Love Dynatrace - Episode 2</div>
-<div class="card-duration">
-<span>10 min </span>
-<span>Updated Mar 9, 2021</span>
-</div>
-<div class="card-footer">
-<div class="category-icon codelevel-icon"></div>
-<paper-button class="codelevel-bg">Start</paper-button>
-</div>
-</a>
 </card-sorter>
 <div id="loading-placeholder" class="site-width">
 Loading Codelabs, please wait...
