@@ -88,13 +88,18 @@ The Perfomance Clinics CodeLabs provide a guided, tutorial-based hands-on learni
 <paper-tab>Recent</paper-tab>
 <paper-tab>Duration</paper-tab>
 </paper-tabs>
-</div></div>
+</div><paper-dropdown-menu label="Filter by category" class="dropdown-filter" no-label-float noink no-animations>
+<paper-listbox id="categorylist" slot="dropdown-content" class="dropdown-content" on-iron-activate="onCategoryActivate" attr-for-selected="filter">
+<paper-item filter="codelevel">codelevel</paper-item>
+<paper-item filter="easytravel">easytravel</paper-item>
+</paper-listbox>
+</paper-dropdown-menu></div>
 <card-sorter id="cards" class="site-width">
-<a href="/codelabs/why-devs-love-dynatrace-1/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-codelevel" data-category="codelevel,cicd,qualitygates" data-title="Why Devs Love Dynatrace - Episode 1" data-duration="10" data-updated="2021-03-09T14:55:08+01:00" data-tags="codelevel" data-pin="">
+<a href="/codelabs/why-devs-love-dynatrace-1/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-codelevel" data-category="codelevel,cicd,qualitygates" data-title="Why Devs Love Dynatrace - Episode 1" data-duration="10" data-updated="2021-03-30T14:36:43+02:00" data-tags="codelevel" data-pin="">
 <div class="description">Why Devs Love Dynatrace - Episode 1</div>
 <div class="card-duration">
 <span>10 min </span>
-<span>Updated Mar 9, 2021</span>
+<span>Updated Mar 30, 2021</span>
 </div>
 <div class="card-footer">
 <div class="category-icon codelevel-icon"></div>
@@ -110,6 +115,17 @@ The Perfomance Clinics CodeLabs provide a guided, tutorial-based hands-on learni
 <div class="card-footer">
 <div class="category-icon codelevel-icon"></div>
 <paper-button class="codelevel-bg">Start</paper-button>
+</div>
+</a>
+<a href="/codelabs/deploy-easytravel-at-localhost/index.html?index=..%2F..index" on-tap="navigate" class="codelab-card category-easytravel" data-category="easytravel,dem,localhost" data-title="Deploying Easytravel @ 127.0.0.1" data-duration="30" data-updated="2021-03-30T13:38:51+02:00" data-tags="dem,easytravel,localhost" data-pin="">
+<div class="description">Deploying Easytravel @ 127.0.0.1</div>
+<div class="card-duration">
+<span>30 min </span>
+<span>Updated Mar 30, 2021</span>
+</div>
+<div class="card-footer">
+<div class="category-icon easytravel-icon"></div>
+<paper-button class="easytravel-bg">Start</paper-button>
 </div>
 </a>
 </card-sorter>
