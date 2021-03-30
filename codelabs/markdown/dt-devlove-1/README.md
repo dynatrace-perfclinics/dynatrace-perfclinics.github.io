@@ -7,12 +7,37 @@ authors: sergio.hinojosa
 
 # Why Devs Love Dynatrace - Episode 1
 
-
 ## Agenda
 
+With this Developer Webinar Series we want to bring you from Zero to Hero
+
 <!--TODO create AGENDA -->
-: Negative
-Agenda comes here
+Negative
+: Episode 1-4 Agenda comes here
+
+<!-- ### TODO Abstract 4 Episodes
+
+### What we’re covering/not covering
+
+ Then we will play the role of an application Tester and test manually the Login/Account REST Endpoints of EasyTravel on the integration system. We will learn how to filter and analyze each distributed transaction up to code level details showing it's impact on each service. We will learn the principles of filters and chain of filters. 
+- This is not a product tutorial (although we will demo and show new features of the product)
+- We will cover some best practices on Loadtesting and Release comparison so you can apply this in you company and help release better software faster.
+- The software optimizations and analysis can be done <a href="https://www.dynatrace.com/support/help/technology-support/supported-technologies-and-versions/" target="_blank">in any technology that Dynatrace can monitor</a> 
+- There is no need to be an Azure or Keptn expert and everything we are covering can be applied to ANY environment (e.g. Azure, GCP, Kubernetes, On-Prem, etc…) and any modern CI/CD Pipeline that can be triggered via REST.
+
+- Help you become more comfortable using Dynatrace to diagnose application problems, understand the service dependencies, the architecture and know how and where to optimize.
+- Help you diagnose the overall health of an environment from thousands of services all the way to threads, exceptions and response times of a single transaction end-2-end through all layers (FullStack)
+- Get Feedback on Transactions for Developers
+- Do a Top Down-analysis and Bottom-Up (on single or multiple transactions)
+- Understand the added-value for developers to have an automated qualitygate in the CI/CD pipeline.
+- Make the diagnosis easy for others in your organization
+- Not everybody needs to be a “Dynatrace Expert”
+- Understand how you can leverage Davis so she helps you monitor and diagnose applications.
+- Understand the value of automatic quality gates with performances as a self-service
+- Best Practices for automatic loadtesting and quality gates. How to build SLI/SLOs for continuous release comparison. 
+- Integrate, compare and analyze Loadtests with Dynatrace
+- Compare and analyze GarbageCollection, Memory Allocation, Survived Objects, ThreadGroups & blocking Threads as well as CPU Utilization for loadtests or any ondemand analysis for that matter.
+---->
 
 ## Introduction 
 Duration: 10
@@ -20,19 +45,35 @@ Duration: 10
 Positive
 : As a developer you are asked to create high quality software faster. Fullstack Observability and automated distributed tracing with code level visibility give you all the data you need to analyse and understand response time hotspots, cpu and memory usage, errors and exceptions, service dependencies, synchronization and thread issues, inefficient database calls, problematic libraries or impact of 3rd party components.
 
-In Episode 1 of this Performance Clinic Series, we will show you hands-on on how you can use Dynatrace in your development & test environments to automate observability and analysis of your applications & services. We will learn how to analyse problematic transactions in complex & hybrid distributed systems. We will dive into easy access of your distributed traces (we call them PurePaths) and how Dynatrace automatically shows the hotspots so that you can easily optimize or fix them.
+![perfclinic_devslovedynatrace_ep1.gif](img/perfclinic_devslovedynatrace_ep1.gif)
 
+>In Episode 1 of this Performance Clinic Series, we will show you hands-on on how you can use Dynatrace in your development & test environments to automate observability and analysis of your applications & services. We will learn how to analyse problematic transactions in complex & hybrid distributed systems. We will dive into easy access of your distributed traces (we call them PurePaths) and how Dynatrace automatically shows the hotspots so that you can easily optimize or fix them.
 
 In Episode 1 we will learn how to:
 - Easy start with Dynatrace in Development & Integration environments 
 - Analyze big & complex environments
 - Enhance Developers FeedBack with distributed tracing and code level insights
-- Analyze and identify developer transactions
-- Level up & automate with Synthetic Testing 
+- Analyze and identify developer transactions (or any kind of transaction)
+
+## Dynatrace & the OneAgent for Devs in a nutshell
+### Dynatrace Secret Sauce
+Positive
+: ![Dynatrace Secret Sauce](img/dt-secretsauce.png)
+
+### Observability and so much more
+Positive
+: ![observability and more](img/dt-obs-and-more.png)
+
+### Features for Developers in a nutshell
+Positive
+: ![observability and more for devs](img/dt-obs-meaning-for-dev.png)
 
 ## Installing the OneAgent & Easytravel
 
 The environment we want to analyze consists of a booking travel portal with a mix of technologies. A mix of Legacy and Classic Stack and also some new stack running on containers. You just need an ubuntu machine to spin it up. 
+
+Positive
+: You have to bring your own Dynatrace tenant. If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
 ### Download install script
 >Download help script to install Easytravel, Nginx, Docker the OneAgent and other utils	
@@ -42,6 +83,7 @@ wget https://raw.githubusercontent.com/dynatrace-perfclinics/why-devs-love-dynat
 ### Add your Dynatrace credentials
 Positive
 : We want that the script installs the OneAgent before installing easyTravel and the docker containers. We just need to add the variables at the beginning.
+
 ```bash
 ## Set DT_TENANT_URL and API TOKEN
 # ---- Define Dynatrace Environment ----
@@ -57,86 +99,125 @@ sudo bash -c './ubuntu-setup-easytravel.sh &'
 Positive
 : If you want to learn more about how this script is composed and setting up easytravel, it's endpoints and everything that is installed, check out the codelab [Deploying Easytravel @ 127.0.0.1](https://dynatrace-perfclinics.github.io/codelabs/deploy-easytravel-at-localhost) 
 
-## Dynatrace Configuration  (Monaco)
+## Environment Configuration (MonACo)
 
-Leveraging best practices such as automated tagging and management zones we will learn how to get a quick and easy an understanding of applications performance and it's transactions. Analysing hosts, database statements, service dependencies, application network traffic, exceptions, slow transactions and failures on the whole environment or on specific stages, departments, sub companies, namespaces, etc. Then we will play the role of an application Tester and test manually the Login/Account REST Endpoints of EasyTravel on the integration system. We will learn how to filter and analyze each distributed transaction up to code level details showing it's impact on each service. We will learn the principles of filters and chain of filters. 
+Monaco stands for `Monitoring As Code`. In Dynatrace we love to automate. With monaco we can automate the configuration of one or multiple environments following a GitOps approach. 
+
+Positive
+: Having an environment where automatically every Host, Process, Namespace, Transaction etc... gets categorized automatically (via automated tagging) is a ver powerful and useful approach that should be used on every DevOps practice. With Dynatrace you can use filters and chain of filters to find the needle in the haystack in a matter of seconds.
+
+We will import the following configurations following a GitOps approach:
+
+- [Management Zones](https://www.dynatrace.com/support/help/how-to-use-dynatrace/management-zones/) 
+- [Automated Tagging](https://www.dynatrace.com/support/help/how-to-use-dynatrace/tags-and-metadata/setup/how-to-define-tags/#automated-approach)
+- [Request Attributes](https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/basic-concepts/request-attributes/)
+- [Dashboards](https://www.dynatrace.com/support/help/how-to-use-dynatrace/dashboards-and-charts/dashboards/create-dashboards/)
+- [Application Definition](https://www.dynatrace.com/support/help/how-to-use-dynatrace/real-user-monitoring/setup-and-configuration/web-applications/initial-configuration/define-your-applications-via-the-my-web-application-placeholder/)
+
+### Download Monaco
+[Dynatrace Monitoring as Code](https://github.com/dynatrace-oss/dynatrace-monitoring-as-code)
+
+Download the [latest release (depending the architecture of your OS)](https://github.com/dynatrace-oss/dynatrace-monitoring-as-code/releases/latest) and add the binary to your path.
+
+### Check that you can execute the binary
+```bash
+monaco --help
+```
+### Clone the GitOps configuration
+```bash
+git clone https://github.com/dynatrace-perfclinics/why-devs-love-dynatrace
+```
+
+### Navigate to the GitOps directory
+```bash
+cd why-devs-love-dynatrace/monaco/devlove 
+```
+
+### Add your variables to a helper script `set_dt_variables.sh`
+```bash
+vi set_dt_variables.sh
+```
+
+```bash
+# Sample: https://{your-domain}/e/{your-environment-id} for managed or https://{your-environment-id}.live.dynatrace.com for SaaS
+DT_TENANT_URL=
+# https://www.dynatrace.com/support/help/shortlink/token#create-an-api-token-
+# Token in format dt0c01.STXXXX....
+DT_API_TOKEN=
+
+# DT_USER (Your login username in the environment, Click on the top right on the people icon and see your id, it can be your email or a username)
+DT_USER=
+```
 
 Negative
-: WIP
+: The variables will be exported as environment variables.
 
+### Load the variables in the shell
+```bash
+source set_dt_variables.sh
+```
+### Execute Monaco
 
-### What we’re covering/not covering
+```bash
+monaco deploy -e environment.yaml --project episode1 -v
+```
+##  Diagnosing any Environment 
 
-- This is not a product tutorial (although we will demo and show new features of the product)
-  
-- We will cover some best practices on Loadtesting and Release comparison so you can apply this in you company and help release better software faster.
+### Understanding the Performance of any Environment
+Positive
+: Leveraging automated tagging and management zones you can get very fast and easy an understanding of user experience, transactions, hosts, application network traffic, failures on specific stages, regions, datacenters, namespaces, departments, subcompanies, etc.
 
-- The software optimizations and analysis can be done <a href="https://www.dynatrace.com/support/help/technology-support/supported-technologies-and-versions/" target="_blank">in any technology that Dynatrace can monitor</a> 
+![software-intelligence-dashboard](img/dashboard-release-better-software-faster.png)
 
-- There is no need to be an Azure or Keptn expert and everything we are covering can be applied to ANY environment (e.g. Azure, GCP, Kubernetes, On-Prem, etc…) and any modern CI/CD Pipeline that can be triggered via REST.
-
-
-<!-- ### Abstract 4 Episodes
-
-- Help you become more comfortable using Dynatrace to diagnose application problems, understand the service dependencies, the architecture and know how and where to optimize.
-- Help you diagnose the overall health of an environment from thousands of services all the way to threads, exceptions and response times of a single transaction end-2-end through all layers (FullStack)
-- Get Feedback on Transactions for Developers
-- Do a Top Down-analysis and Bottom-Up (on single or multiple transactions)
-- Understand the added-value for developers to have an automated qualitygate in the CI/CD pipeline.
-- Make the diagnosis easy for others in your organization
-- Not everybody needs to be a “Dynatrace Expert”
-- Understand how you can leverage Davis so she helps you monitor and diagnose applications.
-- Understand the value of automatic quality gates with performances as a self-service
-- Best Practices for automatic loadtesting and quality gates. How to build SLI/SLOs for continuous release comparison. 
-- Integrate, compare and analyze Loadtests with Dynatrace
-- Compare and analyze GarbageCollection, Memory Allocation, Survived Objects, ThreadGroups & blocking Threads as well as CPU Utilization for loadtests or any ondemand analysis for that matter.
-
----->
-
-##  Overview of the System 
-
-
-
-### Diagnosing the Health of an Environment
-Leveraging tags and Management Zones you can get very fast and easy an understanding of UX, transactions, hosts, application network traffic, failures on the whole environment or on specific stages, departments, subcompanies, etc.
-
-In this example you can get an overview of:
+In this Performance Overview Dashboard you can see:
 
 - the amount and health of databases, services, hosts and applications.
 - amount of requests vs responsetime 95th percentile
-- network status
+- Network status
 - HTTP errors and failed transactions
 - Database calls and time spent in database per transaction
 - most failing services 
 - service throughput
 - slowest services
 - database calls per service
+- time transactions spent in database
 - service time spent in wait, lock, IO and CPU
 - JVM CPU by ThreadGroup
 - GC by Poolname
 - Memory Allocation Objects by API
 
-<!-- 
-FIXME
-![software-intelligence-dashboard](assets/images/dashboard-softint.png)
--->
 
+Positive
+: Click on the Management Filter (Top right) Filter by EasyTravel or BankJob. See how the Dashboard automatically adapts to the entities filtered.
 
-#### Let's get the big picture of the environment. 
+## Deployment overview
 
-- Use the Management Zone
+For getting a quick understanding on what is deployed on an enviroment, I recommend to start with the following sections:
 
-- Navigate into:
-  - Technologies
-  - Applications
-  - Smartscape
+### Technologies
+Positive
+: Click on Technologies (either on) te link of the dashboard or expand the left menu > technologies
 
-#### Introducing Diagnostic Tools 
-- Open Technologies
+![technologies](img/dt-technologies.png)
+> In this screenshot your might find more technologies since we have a Developer Kubernetes Cluster deployed from Episode 2.
+ 
+### Applications
+Get an understanding on the real users accessing the defined applications.
+![technologies](img/dt-apps.png)
 
-<!--- ----------------------------- ---->
+### Smartscape
+Positive
+: Get an understanding on the dependencies and all the layers of the deployed & monitored technologies. Hosts running on Datacenters, processes running on hosts, services (transactions) running on each process and users (applications) interacting with those services.
+
+![technologies](img/dt-smartscape.png)
+
 ## Basic Diagnostics
 
+### Diagnostic Tools 🔬🩺
+
+[More about Diagnostic Tools](https://www.dynatrace.com/support/help/how-to-use-dynatrace/diagnostics/)
+
+![technologies](img/dt-diagtools.png)
 ### Top Requests 
 
 Search for:
@@ -151,7 +232,7 @@ Search for:
 Search for:
 
 - Do we have failing  database statements?
-- Which is the slowest database transaction of the day? **Continue analysing with the outliers**
+- Which is the slowest database transaction of the day? **Continue analysing with the outliers** Detect the slowest execution and understand from where was this SQL triggered.
 - Which SQL hast the most Fetch count and wich the most Row count? Where is this transaction coming from? Which application and which user action is triggering this SQL?
 
 ### Exceptions

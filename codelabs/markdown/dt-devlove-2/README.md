@@ -9,7 +9,7 @@ authors: sergio.hinojosa
 
 
 ## Introduction 
-Duration: 10
+Duration: 1
 
-WIP
-Copy Codelab
+Positive
+: Stay tuned 📺 for Episode 2
