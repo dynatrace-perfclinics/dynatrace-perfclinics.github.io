@@ -190,6 +190,8 @@ DT_USER=
 <aside class="special"><p><a href="https://www.dynatrace.com/support/help/how-to-use-dynatrace/diagnostics/" target="_blank">Learn more about Diagnostic Tools</a></p>
 </aside>
 <p class="image-container"><img alt="technologies" src="img/4931158e1657a6fd.png"></p>
+<aside class="warning"><p>Some of the Diagnosis excercises will differ from your environment since in Episode 2 we will create a continuous delivery pipeline and deploy different releases of EasyTravel. The releases will be automatically load tested, compared and evaluated with an intelligent quality gate. For learning how to work with filters and chain of filters we don&#39;t need to build the pipeline at this moment.</p>
+</aside>
 
 
       </google-codelab-step>
@@ -197,51 +199,87 @@ DT_USER=
       <google-codelab-step label="Diagnostics - Requests" duration="0">
         <aside class="special"><p>Click on Top web requests. This will open a Multidimensional Analyis of all top requests.</p>
 </aside>
-<p class="image-container"><img alt="technologies" src="img/da776a678369541.png"></p>
+<p class="image-container"><img alt="requests" src="img/da776a678369541.png"></p>
 <aside class="special"><p>Notice how you can change the <strong>splitting criterias</strong>, <strong>split mode</strong>, the <strong>aggregation</strong> and the <strong>metric</strong> to plot the dimension.</p>
 </aside>
 <p><em>We will search for the following transactions:</em></p>
 <h2 is-upgraded>🔎 Only failed transactions</h2>
-<p class="image-container"><img alt="technologies" src="img/bc0df7f0b54f53d9.png"></p>
+<p class="image-container"><img alt="requests" src="img/bc0df7f0b54f53d9.png"></p>
 <h2 is-upgraded>🔎 Transactions with more than 10 seconds over the last 6 hours</h2>
-<p class="image-container"><img alt="technologies" src="img/c6112d20381c7ba1.png"></p>
+<p class="image-container"><img alt="requests" src="img/c6112d20381c7ba1.png"></p>
 <aside class="special"><p>By changing the Metric to <strong>Reponse time</strong>, <strong>Aggregation</strong> to Maximum you get an understanding of the slowest requests on the queried time.</p>
 </aside>
 <h2 is-upgraded>🔎 Transactions calling dynatrace.com</h2>
+<p class="image-container"><img alt="requests" src="img/69cb5e5a540307b3.png"></p>
+<aside class="special"><p>By clicking on on the 3 dots, an analysis menu for the selected requests opens. By Clicking for example on the <strong>service backtrace</strong>, you can trace the requests back to it&#39;s origin.</p>
+</aside>
 <h2 is-upgraded>🔎 Transactions that makes more than 100 database calls.</h2>
+<p class="image-container"><img alt="requests" src="img/8b89bdda77ce711b.png"></p>
+<h2 is-upgraded>🔎 Transactions with Lock issues</h2>
+<aside class="warning"><p>Plotting by <strong>Lock time</strong> &amp; aggregation <strong>maximum</strong> shows you the time a transaction spends in Lock time. Meaning the Thread is bloqued and can&#39;t continue doing it&#39; job.</p>
+</aside>
+<p class="image-container"><img alt="requests" src="img/c1e233a3d0eb3d75.png"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Diagnostics - Database Statements" duration="0">
-        <p>Search for:</p>
-<ul>
-<li>Do we have failing  database statements?</li>
-<li>Which is the slowest database transaction of the day? <strong>Continue analysing with the outliers</strong> Detect the slowest execution and understand from where was this SQL triggered.</li>
-<li>Which SQL hast the most Fetch count and wich the most Row count? Where is this transaction coming from? Which application and which user action is triggering this SQL?</li>
-</ul>
-<h2 is-upgraded>Exceptions</h2>
-<aside class="warning"><p>⚠️ Exceptions are expensive and can cost unnecessary memory and CPU consumption. Having the ability to sort them by amount, impact and impacted services allows you to assign them to tickets in your backlog. Making your application continuously better.</p>
+        <aside class="special"><p>Click on Top Database statements. This will open a Multidimensional Analyis of all database statements.</p>
 </aside>
-<p>Search for:</p>
-<ul>
-<li>All Exceptions of the day</li>
-<li>Failed exceptions</li>
-</ul>
+<p class="image-container"><img alt="requests" src="img/35145022ab5bbf88.png"></p>
+<h2 is-upgraded><em>We will search for the following transactions:</em></h2>
+<h2 is-upgraded>🔎 Do we have failing  database statements?</h2>
+<p class="image-container"><img alt="requests" src="img/533f3cdf8a851ca3.png"></p>
+<aside class="special"><p>There is no match which means there are no failed database statements. Which is good. o you have failed database statements or failed requests in your environment?</p>
+</aside>
+<h2 is-upgraded>🔎 Which is the slowest database transaction of the day? <strong>Continue analysing with the outliers</strong> Detect the slowest execution and understand from where was this SQL triggered.</h2>
+<p class="image-container"><img alt="requests" src="img/bd872b59d26ea1dc.png"></p>
+<aside class="special"><p>We plot by <strong>response time</strong> and <strong>maximum</strong> and we continue filtering by adding an operand for <strong>&gt; response time</strong>. Then we select the slowest SQL and Click on <strong>Outliers</strong>.</p>
+</aside>
+<p class="image-container"><img alt="requests" src="img/d358115800c291e7.png"></p>
+<aside class="special"><p>Here we get an understanding of the distribution of the transactions. Then on the 3 dots, we do a <strong>backtrace</strong> to understand who triggered this SQL.</p>
+</aside>
+<p class="image-container"><img alt="requests" src="img/9fefc1c50a9fd478.png"></p>
+<aside class="special"><p>On the backtrace we notice that this transaction is coming from <strong>EasyTravel Angular</strong> from the request endpoint <code>/easytravel/rest/journeys/[1-9]</code>.</p>
+</aside>
+<h2 is-upgraded>🔎 Which SQL hast the most Fetch count and wich the most Row count? Where is this transaction coming from? Which application and which user action is triggering this SQL?</h2>
+<p class="image-container"><img alt="requests" src="img/bc3c6c14baf3a624.png"></p>
+<aside class="special"><p>On the backtrace we notice that this transaction is being triggered directly from the AuthenticationService. By clicking on each node you get details of those transactions. here we see the different Methods (requests) and its amount that are triggering such an SQL to the Database. You can also check the instances and validate if the loadbalancing is done properly and which instance (container, pod, etc..) did that transaction at a specific time.</p>
+</aside>
+<p class="image-container"><img alt="requests" src="img/d901ef6bd224652d.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Diagnosis - Exceptions" duration="0">
+        <aside class="warning"><p><strong>Protip:</strong> ⚠️ Exceptions are expensive and can cost unnecessary memory and CPU consumption. Having the ability to sort them by amount, impact and impacted services allows you to assign them to tickets in your <strong>Backlog</strong>. Making your application continuously better.</p>
+</aside>
+<p><em>We will search for the following transactions:</em></p>
+<aside class="special"><p>Click on Exception Analysis.</p>
+</aside>
+<h2 is-upgraded>🔎 All Exceptions of the day</h2>
+<p class="image-container"><img alt="ex" src="img/b6eec67df9c3bf9c.png"></p>
+<h2 is-upgraded>🔎 Failed exceptions</h2>
+<p class="image-container"><img alt="ex" src="img/3b0917ef8edecaf3.png"></p>
 <aside class="special"><p>Dynatrace has the ability to configure custom error detection for your services. If there is an BusinessException where you want to mark the transation failed so the failurerate increases, you can do this in the <a href="https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/configuration/configure-service-error-detection/" target="_blank">service error detection</a>.</p>
 </aside>
-<h2 is-upgraded>Let 👧 🧠 DAVIS work for you!</h2>
+<aside class="special"><p><strong>Let 👧 🧠 DAVIS work for you!</strong></p>
+</aside>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Developer Feedback and Manual Testing" duration="0">
-        <p>Feedback is one of the most important attributes on Software Development. The better, faster and reliable the feedback is, the better will the software be.</p>
-<p>In this section we will see how developers can get feedback on real time from integration or production systems.</p>
-<p><strong>No more &#34;well... it worked on my computer, is operations problem now 🤷‍♂️ &#34;❗️</strong></p>
-<h2 is-upgraded>REST Sign-In</h2>
-<h3 is-upgraded>REST Sign-In (Create Account) EasyTravel</h3>
-<p>We are asked to test the REST Sign-In and Login functionality of  Easytravel. To understand the flow of the transaction, response time and architecture. We are only given the REST Endpoint.</p>
+        <p class="image-container"><img src="img/f33bcc526708217b.png"></p>
+<aside class="special"><p>In this section we will see how developers can get feedback on real time from any environment, test, development, integration or even production systems.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dev Feedback - REST Sign-In" duration="0">
+        <h2 is-upgraded>REST Sign-In (Create Account) EasyTravel</h2>
+<p>We are asked to test the REST Sign-In and Login functionality of Easytravel. To understand the flow of the transaction, response time and architecture. We are only given the REST Endpoint where <code>&#123;&#123;custom.easytravel_ip}}</code> is the IP where easyTravel is deployed.</p>
 <pre><code>POST http://&#123;&#123;custom.easytravel_ip}}/easytravel/rest/signin
 </code></pre>
 <p>JSON Body</p>
@@ -258,26 +296,47 @@ DT_USER=
 }
 
 </code></pre>
-<p>We are going to pass this attributes into the POST request.</p>
+<p>We are going to pass the following attributes into the POST request.</p>
 <pre><code>HTTP Headers:
 Content-Type: application/json
 x-developer: yourname
 </code></pre>
-<p>For this we can use cURL, Postman or any REST tool. Here is an API Test already preconfigured for you <a href="https://apitester.com/shared/checks/961787656e25474a903dd5dd917d7570" target="_blank">🚦 API TEST Template for SingIn</a></p>
+<aside class="special"><p>Notice the <code>x-developer</code> header. This parameter is automatically captured in the environment. We deployed this request attribute previously with monaco.</p>
+</aside>
+<p>For this excercise you can use cURL, VisualCode, Postman or any REST tool of your choice. Here is an API Test already preconfigured for you <a href="https://apitester.com/shared/checks/1e9c26fe152648adace2db35aaa2a6f6" target="_blank">🚦 API TEST Template for SingIn</a></p>
 <ul>
 <li>The test consists of basically 2 steps, POST request and an assert.</li>
 <li>Modify the X-Developer Header with <strong>your_name_identifier</strong>.</li>
 <li>This value will be used as email and password for the creation of the SignIn. (just for keeping things simple)</li>
 </ul>
-<h3 is-upgraded>Create an Account via REST</h3>
-<ul>
-<li>Click on Test</li>
-<li>It should pass all 4 steps.</li>
-<li>Now, click on „Test„ again. Yes, with the same data. Let‘s try to create the same Sign-In Account.</li>
-<li>The test should fail. What error code did you get?</li>
-</ul>
-<h2 is-upgraded>REST Log-In</h2>
-<h3 is-upgraded>REST Login (Log in to the created account)  EasyTravel</h3>
+<p class="image-container"><img alt="alt" src="img/ae00c71f806d89ff.png"></p>
+<h2 is-upgraded>Create an Account via REST</h2>
+<aside class="special"><p>Click on <strong>Test</strong></p>
+</aside>
+<aside class="special"><p>It should pass all 4 steps.</p>
+</aside>
+<p class="image-container"><img alt="alt" src="img/ec83d4ca609f1f0c.png"></p>
+<aside class="special"><p>On the response you see it returns a JSON with the Account details and a RC 200.</p>
+</aside>
+<p class="image-container"><img alt="alt" src="img/2dc3b4c807ff2140.png"></p>
+<aside class="warning"><p>Now, click on <strong>Test</strong> again. Yes, with the same data. Let‘s try to create the same Sign-In Account.</p>
+</aside>
+<p class="image-container"><img alt="alt" src="img/71136efeb80ceb46.png"></p>
+<aside class="warning"><p>The test should fail. What error code did you get?</p>
+</aside>
+<p class="image-container"><img alt="alt" src="img/23777da4a0f351ba.png"></p>
+<aside class="warning"><p>You should see a ResponseCode 403 and the following error message:</p>
+</aside>
+<pre><code>{&#34;error&#34;:&#34;The email address you entered is already registered.&#34;}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dev Feedback - REST Log-In" duration="0">
+        <h2 is-upgraded>REST Login (Log in to the created account)  EasyTravel</h2>
+<p>Before we analyse the transactions in Dynatrace, let&#39;s test that we can create a Login with the created Account.</p>
+<p>The endpoint is the following:</p>
 <pre><code>POST http://&#123;&#123;custom.easytravel_ip}}/easytravel/rest/login
 </code></pre>
 <p>JSON Body</p>
@@ -288,36 +347,65 @@ x-developer: yourname
 </code></pre>
 <h3 is-upgraded>Login via REST</h3>
 <ul>
-<li>Open the test <a href="https://apitester.com/shared/checks/67a53403e464439fb4909b205912267d" target="_blank">🚦 API TEST Template for Login</a></li>
-<li>Modify the developer name with your_name to the name where you created the account</li>
+<li>Open the test <a href="https://apitester.com/shared/checks/09c76ef3a75e45ed8a9547996f6d0198" target="_blank">🚦 API TEST Template for Login</a></li>
+<li>Modify the developer name with your_name to the name where you created the account<br><img alt="alt" src="img/dc63438e7ed159ac.png"></li>
 <li>Click on Test</li>
-<li>You should have a succesfull test and the reponse returns the entered data from the Account.</li>
+<li>You should have a succesfull test and the reponse returns the entered data from the Account.<br><img alt="alt" src="img/14e4bb246218db81.png"></li>
 </ul>
-<h2 is-upgraded>REST Sign-In requests in Dynatrace</h2>
-<h3 is-upgraded>MDA FeedBack Developer</h3>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dev Feedback SignIn in Dynatrace" duration="0">
+        <h3 is-upgraded>MDA FeedBack Developer</h3>
 <ul>
 <li>Go to MDA and search the request by <code>{RequestAttribute:Developer}</code></li>
-<li>Filter your requests and show the Service-Flow.</li>
 </ul>
-<h3 is-upgraded>ServiceFlow of the Developer Requests</h3>
+<p class="image-container"><img alt="alt" src="img/9706ebb42151f8d6.png"></p>
+<p><em>You&#39;ll find your request for each transaction twice, but on an Apache Tomcat and on an NGINX. The NGINX (which is running in a docker container) works as a reverse proxa and forwards all headers, hence Tomcat also captures the </em><code>x-developer</code><em> header. pretty easy to understand by showing the service flow or backtrace.</em></p>
 <ul>
-<li>Start the flow from the nginx reverse proxy.</li>
-<li>By not filtering the 3 requests (2x signin + 1x login) you&#39;ll see the flow of the 3.</li>
+<li>Filter your SignIn requests and show the Service-Flow from the NGINX service.</li>
 </ul>
-<h3 is-upgraded>Filter by the first correct sign-in</h3>
-<p>Let&#39;s analyze first the correct signin.</p>
+<p class="image-container"><img alt="alt" src="img/17f2f10983d512a2.png"></p>
+<p>Remove the filter of the <code>sign</code> request. When removing the request type you&#39;ll notice the 3 distributed trace of your requests (2x signin + 1x login).</p>
+<aside class="special"><p>Dynatrace is showing the average response time of the 3 requests and the intertiercalls to each service. The Response Time contribution is dependent of the selected transactions. By selecting a service (node) of the distributed transactions on the right you&#39;ll get an overview of the passing transactions and also the corresponding infrastructure, meaning if you have for example multiple replicasets of a deployment you can filter and see exactly which transactions passed through which container (process) inside a pod.</p>
+</aside>
+<p class="image-container"><img alt="alt" src="img/13c1b9ce371b75f8.png"></p>
+<p>Now let&#39;s filter the transaction of the correct Account creation. Add a <code>response code:200</code> and <code>request:sign</code></p>
+<p class="image-container"><img alt="alt" src="img/10cf2d9c367a8f6.png"></p>
+<p>Now on the NGINX Service we click <strong>Analyze</strong> and go to the <strong>Response time hotspots</strong>. I like to think that I submerge into the service and navigate inside the service.</p>
+<p class="image-container"><img alt="alt" src="img/9ba9f06835d29e8e.png"></p>
+<p>Inside the Response Time hotspots Dynatrace shows us the average time of the selected transactions on the NGINX service. The distribution of its transactions (we have only one here) and the top findings.</p>
+<p class="image-container"><img alt="alt" src="img/39dd763c543b263f.png"></p>
+<p>We see that the most of the time is spent on interaction with other services which is the Method <code>signUser</code> on the EasyTravel Service. We click on the filter to navigate forward.</p>
+<p class="image-container"><img alt="alt" src="img/9f9bcfd30f5eed3a.png"></p>
+<p>Notice how we <strong>jumped</strong> into the next service. Imagine that you are navigating within the distributed transactions and now you find yourself on the next service.</p>
+<p class="image-container"><img alt="alt" src="img/c85e596b7c49cee6.png"></p>
+<p>Notice how we start adding a chain of filters into the analysis and we navigate through the services. Now the time changed to 13.9 ms because we are in the <strong>EasyTravelService.</strong> From those 13.9ms, 8 milliseconds are spent on code execution whitin this service (java code since its a tomcat) and 5.82 ms in calls to <code>addNewUser</code>in the <code>AuthenticationService</code>. We click on the filter on the <code>addNewUser</code>in the <code>AuthenticationService</code> to jump to the next service.</p>
+<p class="image-container"><img alt="alt" src="img/c71ef4d943a7f649.png"></p>
+<p>Now we find ourselves in the AuthenticationService. The timings adapt and we see the information for this transaction and this service. By clicking to the Database we see there were 8 request = 4 Connection Aquisitions + 2 SQL Statements (1 x Select + 1 x Insert ) + its corresponding 2 Commits.</p>
+<p class="image-container"><img alt="alt" src="img/7f90db96cb86309f.png"></p>
+<p>Now let&#39;s show the Purepath so we understand how we navigated. Scrolldown and click on Backtrace and on the NGINX node, click on <strong>Analyze &gt; Purepaths</strong>.</p>
+<p class="image-container"><img alt="alt" src="img/c36cb8b228bfcb5d.png"></p>
+<p>Now it&#39;s showing us the purepath from the nginx as start (distributed trace with all it&#39;s spans and code insights). On the dropdown on the right, show the HTTP request data. Now we remove the filter of the <strong>response code 200</strong> on the NGINX node and click <strong>apply</strong>. What happens?</p>
+<p class="image-container"><img alt="alt" src="img/d08a1c5d94580015.png"></p>
+<p>It&#39;s also showing us the transaction that failed.</p>
+<p>If you compare them you&#39;ll notice that the one that succeded (besides having the response code 200 which is obvious) has an insert statement.</p>
+<p class="image-container"><img alt="alt" src="img/e78c81555800be50.png"></p>
+<p>This is due the fact that the previous select statement (select user...) does not find the account hence is able to insert a new account in the database.</p>
+<p class="image-container"><img alt="alt" src="img/ad7c9f481646848a.png"></p>
+<p>The subsequent account creation returns a row hence the double account can&#39;t be created.</p>
+<p class="image-container"><img alt="alt" src="img/96da217a80308e2d.png"></p>
+<p>The rows returned can also be seen for both transactions by displaying the purepaths from the database node.</p>
+<p class="image-container"><img alt="alt" src="img/82cf5142fad8f4a5.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dev Feedback REST Login in Dynatrace" duration="0">
+        <h3 is-upgraded>Service-flow Login</h3>
 <ul>
-<li>Fiter by <em>HTTP Code 200</em> + Request <em>&#34;sign&#34;</em> notice that you don&#39;t need to match the exact name of the request.</li>
-<li>Notice how Dynatrace shows detailed information from every service and inter-tiercalls as DB calls.</li>
-</ul>
-<h3 is-upgraded>Response Time Hotspots Sign-In</h3>
-<p>Navigate with the Response Time Hotspots all the way to the Database. Follow the services. Notice the detailed information about the SQLs and even the Connection Acquisitions.</p>
-<h3 is-upgraded>Difference between the 2 Sign-Ins</h3>
-<p>Can you notice the difference from the two Sign-in why the second Sign-in failed? That it got an HTTP 403 is obvious. But if you look at the purepaths in detail you&#39;ll notice that the select statement of the first Sign-In did not return any results from the database on the select statement hence it could create an account and subsequently an Insert was done. In the second attempt since there was a result (a row) returned, no Insert statement or new Account was created.</p>
-<h2 is-upgraded>REST Login requests in Dynatrace</h2>
-<h3 is-upgraded>Service-flow Login</h3>
-<ul>
-<li>Now show the flow of a Login.</li>
+<li>Now show the flow of your Login.</li>
 <li>Notice again the intertier-calls how they add up, the contribution of each service and the infrastructure where it&#39;s running.</li>
 </ul>
 <h3 is-upgraded>ResponseTime Hotspots Login</h3>

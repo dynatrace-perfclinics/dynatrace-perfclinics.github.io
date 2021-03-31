@@ -220,13 +220,18 @@ Positive
 Positive
 : [Learn more about Diagnostic Tools](https://www.dynatrace.com/support/help/how-to-use-dynatrace/diagnostics/)
 
+
 ![technologies](img/dt-diagtools.png)
+
+Negative
+: Some of the Diagnosis excercises will differ from your environment since in Episode 2 we will create a continuous delivery pipeline and deploy different releases of EasyTravel. The releases will be automatically load tested, compared and evaluated with an intelligent quality gate. For learning how to work with filters and chain of filters we don't need to build the pipeline at this moment.
+
 ## Diagnostics - Requests 
 
 Positive
 : Click on Top web requests. This will open a Multidimensional Analyis of all top requests. 
 
-![technologies](img/dt-requests.png)
+![requests](img/dt-requests.png)
 
 Positive
 : Notice how you can change the **splitting criterias**, **split mode**, the **aggregation** and the **metric** to plot the dimension. 
@@ -234,66 +239,115 @@ Positive
 *We will search for the following transactions:*
 ### 🔎 Only failed transactions
 
-![technologies](img/dt-requests-failed.png)
+![requests](img/dt-requests-failed.png)
 
 ### 🔎 Transactions with more than 10 seconds over the last 6 hours
 
-![technologies](img/dt-requests-10sec.png)
+![requests](img/dt-requests-10sec.png)
 
 Positive
 : By changing the Metric to **Reponse time**, **Aggregation** to Maximum you get an understanding of the slowest requests on the queried time.
 
 ### 🔎 Transactions calling dynatrace.com 
 
+![requests](img/dt-requests-dt.png)
+
+Positive
+: By clicking on on the 3 dots, an analysis menu for the selected requests opens. By Clicking for example on the **service backtrace**, you can trace the requests back to it's origin.
 
 ### 🔎 Transactions that makes more than 100 database calls.
 
+![requests](img/dt-requests-100db.png)
+
+### 🔎 Transactions with Lock issues
+
+Negative
+: Plotting by **Lock time** & aggregation **maximum** shows you the time a transaction spends in Lock time. Meaning the Thread is bloqued and can't continue doing it' job.
+
+![requests](img/dt-requests-lock.png)
 
 
 ## Diagnostics - Database Statements
+Positive
+: Click on Top Database statements. This will open a Multidimensional Analyis of all database statements. 
 
-Search for:
+![requests](img/dt-db.png)
 
-- Do we have failing  database statements?
-- Which is the slowest database transaction of the day? **Continue analysing with the outliers** Detect the slowest execution and understand from where was this SQL triggered.
-- Which SQL hast the most Fetch count and wich the most Row count? Where is this transaction coming from? Which application and which user action is triggering this SQL?
+### *We will search for the following transactions:*
 
-### Exceptions
+### 🔎 Do we have failing  database statements?
+![requests](img/dt-db-failed.png)
+
+Positive
+: There is no match which means there are no failed database statements. Which is good. o you have failed database statements or failed requests in your environment?
+
+### 🔎 Which is the slowest database transaction of the day? **Continue analysing with the outliers** Detect the slowest execution and understand from where was this SQL triggered.
+
+![requests](img/dt-db-slowest.png)
+
+Positive
+: We plot by **response time** and **maximum** and we continue filtering by adding an operand for **> response time**. Then we select the slowest SQL and Click on **Outliers**.
+
+![requests](img/dt-db-slowest-out.png)
+
+Positive
+: Here we get an understanding of the distribution of the transactions. Then on the 3 dots, we do a **backtrace** to understand who triggered this SQL.
+
+![requests](img/dt-db-slowest-backtrace.png)
+
+Positive
+: On the backtrace we notice that this transaction is coming from **EasyTravel Angular** from the request endpoint `/easytravel/rest/journeys/[1-9]`.
+
+
+### 🔎 Which SQL hast the most Fetch count and wich the most Row count? Where is this transaction coming from? Which application and which user action is triggering this SQL?
+
+![requests](img/dt-db-fetch.png)
+
+Positive
+: On the backtrace we notice that this transaction is being triggered directly from the AuthenticationService. By clicking on each node you get details of those transactions. here we see the different Methods (requests) and its amount that are triggering such an SQL to the Database. You can also check the instances and validate if the loadbalancing is done properly and which instance (container, pod, etc..) did that transaction at a specific time.
+
+![requests](img/dt-db-fetch-back.png)
+
+## Diagnosis - Exceptions
 
 Negative
-: ⚠️ Exceptions are expensive and can cost unnecessary memory and CPU consumption. Having the ability to sort them by amount, impact and impacted services allows you to assign them to tickets in your backlog. Making your application continuously better.
+: **Protip:** ⚠️ Exceptions are expensive and can cost unnecessary memory and CPU consumption. Having the ability to sort them by amount, impact and impacted services allows you to assign them to tickets in your **Backlog**. Making your application continuously better.
 
-Search for:
+*We will search for the following transactions:*
 
-- All Exceptions of the day
-- Failed exceptions
+Positive
+: Click on Exception Analysis. 
+
+### 🔎 All Exceptions of the day
+
+![ex](img/dt-ex.png)
+
+### 🔎 Failed exceptions
+
+![ex](img/dt-ex-failed.png)
 
 Positive
 :  Dynatrace has the ability to configure custom error detection for your services. If there is an BusinessException where you want to mark the transation failed so the failurerate increases, you can do this in the <a href="https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/configuration/configure-service-error-detection/" target="_blank">service error detection</a>.
 
 
-### Let 👧 🧠 DAVIS work for you!
+Positive
+: **Let 👧 🧠 DAVIS work for you!**
 
-<!--- ----------------------------- ---->
+<!-- TODO Add Davis Image
+-->
 
 ## Developer Feedback and Manual Testing
 
-> Feedback is one of the most important attributes on Software Development. The better, faster and reliable the feedback is, the better will the software be. 
+![](img/dev-feedback-opsprob.png)
 
-In this section we will see how developers can get feedback on real time from integration or production systems.
+Positive
+: In this section we will see how developers can get feedback on real time from any environment, test, development, integration or even production systems.
 
-**No more "well... it worked on my computer, is operations problem now 🤷‍♂️ "❗️**
+## Dev Feedback - REST Sign-In
 
-<!-- 
-FIXME
-![](assets/images/ops_problem.png)
--->
+### REST Sign-In (Create Account) EasyTravel
 
-### REST Sign-In
-
-#### REST Sign-In (Create Account) EasyTravel
-
-We are asked to test the REST Sign-In and Login functionality of  Easytravel. To understand the flow of the transaction, response time and architecture. We are only given the REST Endpoint.
+We are asked to test the REST Sign-In and Login functionality of Easytravel. To understand the flow of the transaction, response time and architecture. We are only given the REST Endpoint where `{{custom.easytravel_ip}}` is the IP where easyTravel is deployed. 
 
 ```bash
 POST http://{{custom.easytravel_ip}}/easytravel/rest/signin
@@ -315,35 +369,67 @@ JSON Body
 
 ```
 
-We are going to pass this attributes into the POST request.
+We are going to pass the following attributes into the POST request.
 ```bash
 HTTP Headers:
 Content-Type: application/json
 x-developer: yourname
 ```
 
-For this we can use cURL, Postman or any REST tool. Here is an API Test already preconfigured for you <a href="https://apitester.com/shared/checks/961787656e25474a903dd5dd917d7570" target="_blank">🚦 API TEST Template for SingIn</a>
+Positive
+: Notice the `x-developer` header. This parameter is automatically captured in the environment. We deployed this request attribute previously with monaco.
+
+For this excercise you can use cURL, VisualCode, Postman or any REST tool of your choice. Here is an API Test already preconfigured for you <a href="https://apitester.com/shared/checks/1e9c26fe152648adace2db35aaa2a6f6" target="_blank">🚦 API TEST Template for SingIn</a>
 
 
 - The test consists of basically 2 steps, POST request and an assert.
 - Modify the X-Developer Header with **your_name_identifier**.
 - This value will be used as email and password for the creation of the SignIn. (just for keeping things simple)
 
-#### Create an Account via REST
-<!-- FIXME
-![software-intelligence-dashboard](assets/images/rest_signin.png)
--->
+![alt](img/api-test-sign.png)
 
-- Click on Test
-- It should pass all 4 steps.
-- Now, click on „Test„ again. Yes, with the same data. Let‘s try to create the same Sign-In Account. 
-- The test should fail. What error code did you get?
-
-### REST Log-In
-
-#### REST Login (Log in to the created account)  EasyTravel
+### Create an Account via REST
 
 
+Positive
+: Click on **Test**
+
+Positive
+: It should pass all 4 steps. 
+
+![alt](img/api-test-sign-ok.png)
+
+Positive
+: On the response you see it returns a JSON with the Account details and a RC 200.
+
+![alt](img/api-test-sign-ok-2.png)
+
+
+Negative
+: Now, click on **Test** again. Yes, with the same data. Let‘s try to create the same Sign-In Account. 
+
+![alt](img/api-test-sign-nok.png)
+
+Negative
+: The test should fail. What error code did you get?
+
+![alt](img/api-test-sign-nok-2.png)
+
+Negative
+: You should see a ResponseCode 403 and the following error message:
+
+```json
+{"error":"The email address you entered is already registered."}
+```
+
+
+## Dev Feedback - REST Log-In
+
+### REST Login (Log in to the created account)  EasyTravel
+
+Before we analyse the transactions in Dynatrace, let's test that we can create a Login with the created Account.
+
+The endpoint is the following:
 ```bash
 POST http://{{custom.easytravel_ip}}/easytravel/rest/login
 ```
@@ -356,50 +442,109 @@ JSON Body
 }
 ```
 #### Login via REST
-- Open the test <a href="https://apitester.com/shared/checks/67a53403e464439fb4909b205912267d" target="_blank">🚦 API TEST Template for Login</a>
+- Open the test <a href="https://apitester.com/shared/checks/09c76ef3a75e45ed8a9547996f6d0198" target="_blank">🚦 API TEST Template for Login</a>
+
 - Modify the developer name with your_name to the name where you created the account
+![alt](img/api-test-login.png)
+
 - Click on Test
 - You should have a succesfull test and the reponse returns the entered data from the Account.
+![alt](img/api-test-login-ok.png)
 
-### REST Sign-In requests in Dynatrace
+
+## Dev Feedback SignIn in Dynatrace
 
 #### MDA FeedBack Developer
 - Go to MDA and search the request by `{RequestAttribute:Developer}`
-- Filter your requests and show the Service-Flow. 
+
+![alt](img/dev-feedback-mda.png)
+
+*You'll find your request for each transaction twice, but on an Apache Tomcat and on an NGINX. The NGINX (which is running in a docker container) works as a reverse proxa and forwards all headers, hence Tomcat also captures the `x-developer` header. pretty easy to understand by showing the service flow or backtrace.*
+
+
+- Filter your SignIn requests and show the Service-Flow from the NGINX service. 
  
- 
-#### ServiceFlow of the Developer Requests
-- Start the flow from the nginx reverse proxy.
-- By not filtering the 3 requests (2x signin + 1x login) you’ll see the flow of the 3.
+![alt](img/dev-feedback-sign-flow.png)
+
+Remove the filter of the `sign` request. When removing the request type you'll notice the 3 distributed trace of your requests (2x signin + 1x login).
+
+Positive
+: Dynatrace is showing the average response time of the 3 requests and the intertiercalls to each service. The Response Time contribution is dependent of the selected transactions. By selecting a service (node) of the distributed transactions on the right you'll get an overview of the passing transactions and also the corresponding infrastructure, meaning if you have for example multiple replicasets of a deployment you can filter and see exactly which transactions passed through which container (process) inside a pod. 
+
+![alt](img/dev-feedback-sign-flow-3.png)
+
+Now let's filter the transaction of the correct Account creation. Add a `response code:200` and `request:sign`
+
+![alt](img/dev-feedback-sign-flow-sign.png)
+
+Now on the NGINX Service we click **Analyze** and go to the **Response time hotspots**. I like to think that I submerge into the service and navigate inside the service.
+
+![alt](img/dev-feedback-sign-flow-sign-rth.png)
 
 
-#### Filter by the first correct sign-in
-> Let’s analyze first the correct signin.
-
-- Fiter by _HTTP Code 200_ + Request _“sign”_ notice that you don’t need to match the exact name of the request.
-- Notice how Dynatrace shows detailed information from every service and inter-tiercalls as DB calls.
+Inside the Response Time hotspots Dynatrace shows us the average time of the selected transactions on the NGINX service. The distribution of its transactions (we have only one here) and the top findings. 
 
 
-#### Response Time Hotspots Sign-In
+![alt](img/dev-feedback-sign-flow-sign-rth-1.png)
 
-> Navigate with the Response Time Hotspots all the way to the Database. Follow the services. Notice the detailed information about the SQLs and even the Connection Acquisitions.
+We see that the most of the time is spent on interaction with other services which is the Method `signUser` on the EasyTravel Service. We click on the filter to navigate forward.
+
+![alt](img/dev-feedback-sign-flow-sign-rth-2.png)
+
+Notice how we **jumped** into the next service. Imagine that you are navigating within the distributed transactions and now you find yourself on the next service.
+
+![alt](img/dev-feedback-sign-flow-sign-rth-3.png)
+
+Notice how we start adding a chain of filters into the analysis and we navigate through the services. Now the time changed to 13.9 ms because we are in the **EasyTravelService.** From those 13.9ms, 8 milliseconds are spent on code execution whitin this service (java code since its a tomcat) and 5.82 ms in calls to `addNewUser`in the `AuthenticationService`. We click on the filter on the `addNewUser`in the `AuthenticationService` to jump to the next service.
 
 
-#### Difference between the 2 Sign-Ins
-Can you notice the difference from the two Sign-in why the second Sign-in failed? That it got an HTTP 403 is obvious. But if you look at the purepaths in detail you’ll notice that the select statement of the first Sign-In did not return any results from the database on the select statement hence it could create an account and subsequently an Insert was done. In the second attempt since there was a result (a row) returned, no Insert statement or new Account was created.
+![alt](img/dev-feedback-sign-flow-sign-rth-4.png)
 
-### REST Login requests in Dynatrace
+Now we find ourselves in the AuthenticationService. The timings adapt and we see the information for this transaction and this service. By clicking to the Database we see there were 8 request = 4 Connection Aquisitions + 2 SQL Statements (1 x Select + 1 x Insert ) + its corresponding 2 Commits.
 
+![alt](img/dev-feedback-sign-flow-sign-rth-5.png)
+
+
+Now let's show the Purepath so we understand how we navigated. Scrolldown and click on Backtrace and on the NGINX node, click on **Analyze > Purepaths**. 
+
+
+![alt](img/dev-feedback-sign-flow-sign-rth-6.png)
+
+Now it's showing us the purepath from the nginx as start (distributed trace with all it's spans and code insights). On the dropdown on the right, show the HTTP request data. Now we remove the filter of the **response code 200** on the NGINX node and click **apply**. What happens?
+
+![alt](img/dev-feedback-sign-flow-sign-rth-7.png)
+
+It's also showing us the transaction that failed. 
+
+If you compare them you'll notice that the one that succeded (besides having the response code 200 which is obvious) has an insert statement.
+
+![alt](img/dev-feedback-sign-flow-sign-rth-8.png)
+
+This is due the fact that the previous select statement (select user...) does not find the account hence is able to insert a new account in the database. 
+
+
+![alt](img/dev-feedback-sign-flow-sign-rth-9.png)
+
+The subsequent account creation returns a row hence the double account can't be created.
+
+![alt](img/dev-feedback-sign-flow-sign-rth-11.png)
+
+The rows returned can also be seen for both transactions by displaying the purepaths from the database node.
+
+![alt](img/dev-feedback-sign-flow-sign-rth-10.png)
+
+
+
+## Dev Feedback REST Login in Dynatrace
 
 #### Service-flow Login
-- Now show the flow of a Login.
+- Now show the flow of your Login.
 - Notice again the intertier-calls how they add up, the contribution of each service and the infrastructure where it’s running.
 
 <!-- 
 FIXME
 ![Login Flow](assets/images/flow_login.png)
 -->
-
 #### ResponseTime Hotspots Login
 Open the ResponseTime Hotspots from the ReverseProxy. Notice the contribution from Tomcat the Calls to AuthenticationService (4x) and VerificationService (1x)
 
