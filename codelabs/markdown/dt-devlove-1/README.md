@@ -196,10 +196,12 @@ For getting a quick understanding on what is deployed on an enviroment, I recomm
 
 ### Technologies
 Positive
-: Click on Technologies (either on) te link of the dashboard or expand the left menu > technologies
+: Click on Technologies (either on) the link of the dashboard or expand the left menu > technologies
 
 ![technologies](img/dt-technologies.png)
-> In this screenshot your might find more technologies since we have a Developer Kubernetes Cluster deployed from Episode 2.
+
+Negative
+: In this screenshot your might find more technologies since we have a Developer Kubernetes Cluster deployed from Episode 2.
  
 ### Applications
 Get an understanding on the real users accessing the defined applications.
@@ -207,7 +209,7 @@ Get an understanding on the real users accessing the defined applications.
 
 ### Smartscape
 Positive
-: Get an understanding on the dependencies and all the layers of the deployed & monitored technologies. Hosts running on Datacenters, processes running on hosts, services (transactions) running on each process and users (applications) interacting with those services.
+: Get an understanding on the dependencies and all the layers of the deployed & monitored technologies. Hosts running on Datacenters, processes running on hosts, services (transactions) running on each process and users (applications) interacting with those services. **Tip: use the management zone filter to check corresponding entities.** 
 
 ![technologies](img/dt-smartscape.png)
 
@@ -215,19 +217,40 @@ Positive
 
 ### Diagnostic Tools 🔬🩺
 
-[More about Diagnostic Tools](https://www.dynatrace.com/support/help/how-to-use-dynatrace/diagnostics/)
+Positive
+: [Learn more about Diagnostic Tools](https://www.dynatrace.com/support/help/how-to-use-dynatrace/diagnostics/)
 
 ![technologies](img/dt-diagtools.png)
-### Top Requests 
+## Diagnostics - Requests 
 
-Search for:
+Positive
+: Click on Top web requests. This will open a Multidimensional Analyis of all top requests. 
 
-- Only failed transactions
-- Transactions with more than 10 seconds over the last 6 hours
-- Transactions calling dynatrace.com 
-- Transactions that makes more than 100 database calls.
+![technologies](img/dt-requests.png)
 
-### Top Database Statements
+Positive
+: Notice how you can change the **splitting criterias**, **split mode**, the **aggregation** and the **metric** to plot the dimension. 
+
+*We will search for the following transactions:*
+### 🔎 Only failed transactions
+
+![technologies](img/dt-requests-failed.png)
+
+### 🔎 Transactions with more than 10 seconds over the last 6 hours
+
+![technologies](img/dt-requests-10sec.png)
+
+Positive
+: By changing the Metric to **Reponse time**, **Aggregation** to Maximum you get an understanding of the slowest requests on the queried time.
+
+### 🔎 Transactions calling dynatrace.com 
+
+
+### 🔎 Transactions that makes more than 100 database calls.
+
+
+
+## Diagnostics - Database Statements
 
 Search for:
 

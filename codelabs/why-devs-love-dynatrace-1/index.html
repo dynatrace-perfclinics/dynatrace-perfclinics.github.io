@@ -170,14 +170,15 @@ DT_USER=
       <google-codelab-step label="Deployment overview" duration="0">
         <p>For getting a quick understanding on what is deployed on an enviroment, I recommend to start with the following sections:</p>
 <h2 is-upgraded>Technologies</h2>
-<aside class="special"><p>Click on Technologies (either on) te link of the dashboard or expand the left menu &gt; technologies</p>
+<aside class="special"><p>Click on Technologies (either on) the link of the dashboard or expand the left menu &gt; technologies</p>
 </aside>
 <p class="image-container"><img alt="technologies" src="img/5cf61dc59e6c92c8.png"></p>
-<p>In this screenshot your might find more technologies since we have a Developer Kubernetes Cluster deployed from Episode 2.</p>
+<aside class="warning"><p>In this screenshot your might find more technologies since we have a Developer Kubernetes Cluster deployed from Episode 2.</p>
+</aside>
 <h2 is-upgraded>Applications</h2>
 <p>Get an understanding on the real users accessing the defined applications.<br><img alt="technologies" src="img/7e314f3d6a1fd479.png"></p>
 <h2 is-upgraded>Smartscape</h2>
-<aside class="special"><p>Get an understanding on the dependencies and all the layers of the deployed &amp; monitored technologies. Hosts running on Datacenters, processes running on hosts, services (transactions) running on each process and users (applications) interacting with those services.</p>
+<aside class="special"><p>Get an understanding on the dependencies and all the layers of the deployed &amp; monitored technologies. Hosts running on Datacenters, processes running on hosts, services (transactions) running on each process and users (applications) interacting with those services. <strong>Tip: use the management zone filter to check corresponding entities.</strong></p>
 </aside>
 <p class="image-container"><img alt="technologies" src="img/42f8b9fd3c5dc4f.png"></p>
 
@@ -186,18 +187,34 @@ DT_USER=
     
       <google-codelab-step label="Basic Diagnostics" duration="0">
         <h2 is-upgraded>Diagnostic Tools 🔬🩺</h2>
-<p><a href="https://www.dynatrace.com/support/help/how-to-use-dynatrace/diagnostics/" target="_blank">More about Diagnostic Tools</a></p>
+<aside class="special"><p><a href="https://www.dynatrace.com/support/help/how-to-use-dynatrace/diagnostics/" target="_blank">Learn more about Diagnostic Tools</a></p>
+</aside>
 <p class="image-container"><img alt="technologies" src="img/4931158e1657a6fd.png"></p>
-<h2 is-upgraded>Top Requests</h2>
-<p>Search for:</p>
-<ul>
-<li>Only failed transactions</li>
-<li>Transactions with more than 10 seconds over the last 6 hours</li>
-<li>Transactions calling dynatrace.com</li>
-<li>Transactions that makes more than 100 database calls.</li>
-</ul>
-<h2 is-upgraded>Top Database Statements</h2>
-<p>Search for:</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Diagnostics - Requests" duration="0">
+        <aside class="special"><p>Click on Top web requests. This will open a Multidimensional Analyis of all top requests.</p>
+</aside>
+<p class="image-container"><img alt="technologies" src="img/da776a678369541.png"></p>
+<aside class="special"><p>Notice how you can change the <strong>splitting criterias</strong>, <strong>split mode</strong>, the <strong>aggregation</strong> and the <strong>metric</strong> to plot the dimension.</p>
+</aside>
+<p><em>We will search for the following transactions:</em></p>
+<h2 is-upgraded>🔎 Only failed transactions</h2>
+<p class="image-container"><img alt="technologies" src="img/bc0df7f0b54f53d9.png"></p>
+<h2 is-upgraded>🔎 Transactions with more than 10 seconds over the last 6 hours</h2>
+<p class="image-container"><img alt="technologies" src="img/c6112d20381c7ba1.png"></p>
+<aside class="special"><p>By changing the Metric to <strong>Reponse time</strong>, <strong>Aggregation</strong> to Maximum you get an understanding of the slowest requests on the queried time.</p>
+</aside>
+<h2 is-upgraded>🔎 Transactions calling dynatrace.com</h2>
+<h2 is-upgraded>🔎 Transactions that makes more than 100 database calls.</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Diagnostics - Database Statements" duration="0">
+        <p>Search for:</p>
 <ul>
 <li>Do we have failing  database statements?</li>
 <li>Which is the slowest database transaction of the day? <strong>Continue analysing with the outliers</strong> Detect the slowest execution and understand from where was this SQL triggered.</li>
