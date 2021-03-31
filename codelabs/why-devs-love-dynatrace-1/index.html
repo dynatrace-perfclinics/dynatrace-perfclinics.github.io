@@ -28,9 +28,27 @@
                   feedback-link="">
     
       <google-codelab-step label="Agenda" duration="0">
-        <p>With this Developer Webinar Series we want to bring you from Zero to Hero</p>
-<aside class="warning"><p>Episode 1-4 Agenda comes here</p>
+        <aside class="special"><p><em>In this Developer Webinar Series we want to bring you from Zero 👶 to Hero 🦸 from Diagnosing Transactions and releases with Dynatrace to building unbreakable delivery pipelines with automatic performance tests and release validation and fullstack comparison.</em></p>
 </aside>
+<p>Dynatrace assist developers on creating <strong>better software faster</strong>. This series is crafted for developers and performance engineers on helping them get the feedback they need and analyze the impact of every code change on every release. We will also learn how automated and intelligent QualityGates and Performance as a Self-Service stop bad releases going into production automatically.</p>
+<aside class="special"><p>This systematic and generic approach can be applied to any software that Dynatrace monitors and any CI/CD pipeline that our customers may use, meaning we can speed up 🚀 their delivery up to 80% while ensuring the functionality and a higher level of quality of their released software ✅.</p>
+</aside>
+<p class="image-container"><img alt="This (" src="img/c375b26c06321f94.png"></p>
+<p>Some of the topics you will learn:</p>
+<ul>
+<li>Help you become more comfortable using Dynatrace to diagnose application problems, understand the service dependencies, the architecture and know how and where to optimize.</li>
+<li>Help you diagnose the overall health of an environment from thousands of services all the way to threads, exceptions and response times of a single transaction end-2-end through all layers (FullStack)</li>
+<li>Get Feedback on Transactions for Developers</li>
+<li>Do a Top Down-analysis and Bottom-Up (on single or multiple transactions)</li>
+<li>Understand the added-value for developers to have an automated qualitygate in the CI/CD pipeline.</li>
+<li>Make the diagnosis easy for others in your organization</li>
+<li>Not everybody needs to be a &#34;Dynatrace Expert&#34;</li>
+<li>Understand how you can leverage Davis so she helps you monitor and diagnose applications.</li>
+<li>Understand the value of automatic quality gates with performances as a self-service</li>
+<li>Best Practices for automatic loadtesting and quality gates. How to build SLI/SLOs for continuous release comparison. </li>
+<li>Integrate, compare and analyze Loadtests with Dynatrace</li>
+<li>Compare and analyze GarbageCollection, Memory Allocation, Survived Objects, ThreadGroups &amp; blocking Threads as well as CPU Utilization for loadtests or any ondemand analysis for that matter.</li>
+</ul>
 
 
       </google-codelab-step>
@@ -67,6 +85,8 @@
     
       <google-codelab-step label="Installing the OneAgent &amp; Easytravel" duration="0">
         <p>The environment we want to analyze consists of a booking travel portal with a mix of technologies. A mix of Legacy and Classic Stack and also some new stack running on containers. You just need an ubuntu machine to spin it up.</p>
+<aside class="special"><p>Spend more time innovating 😄⚗️ and less time configuring 😣🛠</p>
+</aside>
 <aside class="special"><p>You have to bring your own Dynatrace tenant. If you don&#39;t have a Dynatrace tenant yet, sign up for a <a href="https://www.dynatrace.com/trial/" target="_blank">free trial</a> or a <a href="https://www.dynatrace.com/developer/" target="_blank">developer account</a>.</p>
 </aside>
 <h2 is-upgraded>Download install script</h2>
@@ -93,6 +113,8 @@ DT_PAAS_TOKEN=
     
       <google-codelab-step label="Environment Configuration (MonACo)" duration="0">
         <p>Monaco stands for <code>Monitoring As Code</code>. In Dynatrace we love to automate. With monaco we can automate the configuration of one or multiple environments following a GitOps approach.</p>
+<aside class="special"><p>Spend more time innovating 😄⚗️ and less time configuring 😣🛠</p>
+</aside>
 <aside class="special"><p>Having an environment where automatically every Host, Process, Namespace, Transaction etc... gets categorized automatically (via automated tagging) is a ver powerful and useful approach that should be used on every DevOps practice. With Dynatrace you can use filters and chain of filters to find the needle in the haystack in a matter of seconds.</p>
 </aside>
 <p>We will import the following configurations following a GitOps approach:</p>
@@ -411,6 +433,14 @@ x-developer: yourname
 <h3 is-upgraded>ResponseTime Hotspots Login</h3>
 <p>Open the ResponseTime Hotspots from the ReverseProxy. Notice the contribution from Tomcat the Calls to AuthenticationService (4x) and VerificationService (1x)</p>
 <p>Notice the contribution by Method within the AuthenticationService and how it can tell us which method is taking the most time within a single transaction (even though we are moving in 2 digit ms time)</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Feedback" duration="0">
+        <aside class="special"><p>We are happy to hear your feedback!</p>
+</aside>
+<p>We are happy to hear your thoughts &amp; suggestions!</p>
 
 
       </google-codelab-step>

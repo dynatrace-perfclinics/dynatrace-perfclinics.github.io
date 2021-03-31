@@ -9,22 +9,18 @@ authors: sergio.hinojosa
 
 ## Agenda
 
-With this Developer Webinar Series we want to bring you from Zero to Hero
+Positive
+: ***In this Developer Webinar Series we want to bring you from Zero 👶 to Hero 🦸 from Diagnosing Transactions and releases with Dynatrace to building unbreakable delivery pipelines with automatic performance tests and release validation and fullstack comparison.***
 
-<!--TODO create AGENDA -->
-Negative
-: Episode 1-4 Agenda comes here
+Dynatrace assist developers on creating **better software faster**. This series is crafted for developers and performance engineers on helping them get the feedback they need and analyze the impact of every code change on every release. We will also learn how automated and intelligent QualityGates and Performance as a Self-Service stop bad releases going into production automatically.
 
-<!-- ### TODO Abstract 4 Episodes
+Positive
+: This systematic and generic approach can be applied to any software that Dynatrace monitors and any CI/CD pipeline that our customers may use, meaning we can speed up 🚀 their delivery up to 80% while ensuring the functionality and a higher level of quality of their released software ✅.
 
-### What we’re covering/not covering
 
- Then we will play the role of an application Tester and test manually the Login/Account REST Endpoints of EasyTravel on the integration system. We will learn how to filter and analyze each distributed transaction up to code level details showing it's impact on each service. We will learn the principles of filters and chain of filters. 
-- This is not a product tutorial (although we will demo and show new features of the product)
-- We will cover some best practices on Loadtesting and Release comparison so you can apply this in you company and help release better software faster.
-- The software optimizations and analysis can be done <a href="https://www.dynatrace.com/support/help/technology-support/supported-technologies-and-versions/" target="_blank">in any technology that Dynatrace can monitor</a> 
-- There is no need to be an Azure or Keptn expert and everything we are covering can be applied to ANY environment (e.g. Azure, GCP, Kubernetes, On-Prem, etc…) and any modern CI/CD Pipeline that can be triggered via REST.
+![This (](img/agenda.png)
 
+Some of the topics you will learn:
 - Help you become more comfortable using Dynatrace to diagnose application problems, understand the service dependencies, the architecture and know how and where to optimize.
 - Help you diagnose the overall health of an environment from thousands of services all the way to threads, exceptions and response times of a single transaction end-2-end through all layers (FullStack)
 - Get Feedback on Transactions for Developers
@@ -37,7 +33,6 @@ Negative
 - Best Practices for automatic loadtesting and quality gates. How to build SLI/SLOs for continuous release comparison. 
 - Integrate, compare and analyze Loadtests with Dynatrace
 - Compare and analyze GarbageCollection, Memory Allocation, Survived Objects, ThreadGroups & blocking Threads as well as CPU Utilization for loadtests or any ondemand analysis for that matter.
----->
 
 ## Introduction 
 Duration: 10
@@ -70,7 +65,10 @@ Positive
 
 ## Installing the OneAgent & Easytravel
 
-The environment we want to analyze consists of a booking travel portal with a mix of technologies. A mix of Legacy and Classic Stack and also some new stack running on containers. You just need an ubuntu machine to spin it up. 
+The environment we want to analyze consists of a booking travel portal with a mix of technologies. A mix of Legacy and Classic Stack and also some new stack running on containers. You just need an ubuntu machine to spin it up.
+
+Positive
+: Spend more time innovating 😄⚗️ and less time configuring 😣🛠
 
 Positive
 : You have to bring your own Dynatrace tenant. If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
@@ -102,6 +100,10 @@ Positive
 ## Environment Configuration (MonACo)
 
 Monaco stands for `Monitoring As Code`. In Dynatrace we love to automate. With monaco we can automate the configuration of one or multiple environments following a GitOps approach. 
+
+Positive
+: Spend more time innovating 😄⚗️ and less time configuring 😣🛠
+
 
 Positive
 : Having an environment where automatically every Host, Process, Namespace, Transaction etc... gets categorized automatically (via automated tagging) is a ver powerful and useful approach that should be used on every DevOps practice. With Dynatrace you can use filters and chain of filters to find the needle in the haystack in a matter of seconds.
@@ -542,7 +544,7 @@ The rows returned can also be seen for both transactions by displaying the purep
 - Notice again the intertier-calls how they add up, the contribution of each service and the infrastructure where it’s running.
 
 <!-- 
-FIXME
+TODO
 ![Login Flow](assets/images/flow_login.png)
 -->
 #### ResponseTime Hotspots Login
@@ -550,4 +552,12 @@ Open the ResponseTime Hotspots from the ReverseProxy. Notice the contribution fr
 
 Notice the contribution by Method within the AuthenticationService and how it can tell us which method is taking the most time within a single transaction (even though we are moving in 2 digit ms time)
 
-<!--- ----------------------------- ---->
+## Feedback
+
+Positive
+: We are happy to hear your feedback!
+
+We are happy to hear your thoughts & suggestions!
+
+
+

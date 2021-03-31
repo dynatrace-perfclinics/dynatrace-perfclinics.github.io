@@ -3,13 +3,13 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2021-03-31T15:55:08+02:00",
-  "id": "why-devs-love-dynatrace-2",
+  "updated": "2021-03-31T15:51:40+02:00",
+  "id": "why-devs-love-dynatrace-4",
   "duration": 1,
-  "title": "Why Devs Love Dynatrace - Episode 2",
+  "title": "Why Devs Love Dynatrace - Episode 4",
   "authors": "sergio.hinojosa",
-  "summary": "Why Developers Love Dynatrace - Episode 2",
-  "source": "codelabs/markdown/dt-devlove-2/README.md",
+  "summary": "Why Developers Love Dynatrace - Episode 4",
+  "source": "codelabs/markdown/dt-devlove-4/README.md",
   "theme": "",
   "status": [
     "published"
@@ -22,5 +22,5 @@
   "tags": [
     "codelevel"
   ],
-  "url": "why-devs-love-dynatrace-2"
+  "url": "why-devs-love-dynatrace-4"
 }
