@@ -10,9 +10,10 @@ authors: sergio.hinojosa
 ## Agenda
 
 Positive
-: ***In this Developer Webinar Series we want to bring you from Zero 👶 to Hero 🦸 from Diagnosing Transactions and releases with Dynatrace to building unbreakable delivery pipelines with automatic performance tests and release validation and fullstack comparison.***
+: ***In this Developer Webinar Series we want to bring you from Zero 👶 to Hero 🦸 from Diagnosing Transactions and releases with Dynatrace to building unbreakable delivery pipelines with automatic performance tests and release validation alongside fullstack comparison.***
 
 **Watch the recording of Episode 1 on YouTube!**
+
 ![https://www.youtube.com/watch?v=BLOLbzd0Dmo](.)
 
 Dynatrace assist developers on creating **better software faster**. This series is crafted for developers and performance engineers on helping them get the feedback they need and analyze the impact of every code change on every release. We will also learn how automated and intelligent QualityGates and Performance as a Self-Service stop bad releases going into production automatically.
@@ -21,7 +22,7 @@ Positive
 : This systematic and generic approach can be applied to any software that Dynatrace monitors and any CI/CD pipeline that our customers may use, meaning we can speed up 🚀 their delivery up to 80% while ensuring the functionality and a higher level of quality of their released software ✅.
 
 
-![This (](img/agenda.png)
+![This](img/agenda.png)
 
 Some of the topics you will learn:
 - Help you become more comfortable using Dynatrace to diagnose application problems, understand the service dependencies, the architecture and know how and where to optimize.
