@@ -2,8 +2,8 @@
   "environment": "web",
   "format": "html",
   "prefix": "https://storage.googleapis.com",
-  "mainga": "UA-49880327-14",
-  "updated": "2021-03-31T15:51:40+02:00",
+  "mainga": "UA-193960361-1",
+  "updated": "2021-04-06T14:06:00+02:00",
   "id": "why-devs-love-dynatrace-4",
   "duration": 1,
   "title": "Why Devs Love Dynatrace - Episode 4",
@@ -22,5 +22,6 @@
   "tags": [
     "codelevel"
   ],
+  "ga": "UA-193960361-1",
   "url": "why-devs-love-dynatrace-4"
 }

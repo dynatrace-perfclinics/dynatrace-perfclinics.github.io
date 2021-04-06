@@ -4,6 +4,7 @@ categories: codelevel, cicd, qualitygates
 tags: codelevel
 status: Published
 authors: sergio.hinojosa
+Analytics Account: UA-193960361-1
 
 # Why Devs Love Dynatrace - Episode 1
 
@@ -559,9 +560,28 @@ Notice the contribution by Method within the AuthenticationService and how it ca
 ## Feedback
 
 Positive
-: We are happy to hear your feedback!
+: We hope you enjoyed this lab and found it useful. We would love your feedback!
+<!-- 
+TODO Add formular to track user engagement. See this as an example: https://dynatrace-apac.github.io/
+-->
 
-We are happy to hear your thoughts & suggestions!
+<form>
+  <name>How was your overall experience with this lab?</name>
+  <input value="Excellent" />
+  <input value="Good" />
+  <input value="Average" />
+  <input value="Fair" />
+  <input value="Poor" />
+</form>
+
+<form>
+  <name>How likely are you to recommend this lab to a friend or colleague?</name>
+  <input value="Very Likely" />
+  <input value="Moderately Likely" />
+  <input value="Neither Likely nor unlikely" />
+  <input value="Moderately Unlikely" />
+  <input value="Very Unlikely" />
+</form>
 
 
 

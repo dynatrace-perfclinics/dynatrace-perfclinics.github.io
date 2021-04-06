@@ -4,7 +4,7 @@ categories: easytravel, DEM, localhost
 tags: easytravel
 status: Published
 authors: sergio.hinojosa
-
+Analytics Account: UA-193960361-1
 # Deploying Easytravel @ 127.0.0.1
 
 ## Introduction 

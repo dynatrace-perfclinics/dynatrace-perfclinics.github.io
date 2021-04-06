@@ -4,6 +4,7 @@ categories: codelevel, cicd, qualitygates
 tags: codelevel
 status: Published
 authors: sergio.hinojosa
+Analytics Account: UA-193960361-1
 
 # Why Devs Love Dynatrace - Episode 3
 
