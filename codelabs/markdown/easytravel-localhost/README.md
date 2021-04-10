@@ -132,8 +132,12 @@ DT_PAAS_TOKEN=
 chmod +x ubuntu-setup-easytravel.sh
 ```
 
+### Execute the script interactive
+```bash
+sudo bash ubuntu-setup-easytravel.sh -i
+```
 
-### Execute the script
+### Execute the script in the background
 ```bash
 sudo bash -c './ubuntu-setup-easytravel.sh &'
 ```
@@ -221,7 +225,6 @@ Duration: 5
 Positive
 : Here are some tips on how to stop and start all easytravel processes. 
 
-
 ### Kill all processes
 ```bash
 ps -ef | grep -i easytravel | awk '{print "sudo kill -9 "$2}' | sh
@@ -253,7 +256,6 @@ ps -aux | grep -i easytravel
 sudo su;
 killall java; docker start reverseproxy bankjob; USER=ubuntu; su -c "sh /home/$USER/easytravel-2.0.0-x64/weblauncher/weblauncher.sh > /tmp/weblauncher.log 2>&1 &" $USER
 ```
-
 
 ## Tips & Links
 Duration: 2

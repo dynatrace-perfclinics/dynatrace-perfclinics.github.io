@@ -121,7 +121,10 @@ DT_PAAS_TOKEN=
 <h2 is-upgraded>Make it executable</h2>
 <pre><code>chmod +x ubuntu-setup-easytravel.sh
 </code></pre>
-<h2 is-upgraded>Execute the script</h2>
+<h2 is-upgraded>Execute the script interactive</h2>
+<pre><code>sudo bash ubuntu-setup-easytravel.sh -i
+</code></pre>
+<h2 is-upgraded>Execute the script in the background</h2>
 <pre><code>sudo bash -c &#39;./ubuntu-setup-easytravel.sh &amp;&#39;
 </code></pre>
 <p>run the command as root for installing also utils as docker, in the VM you have a docker server where you can spin containers also easily. The script will install easytravel start it and it will also install the BankJob (a java app for learning how the basline of Davis works) and an NGINX reverse proxy that routes the traffic of EasyTravel Angular to port 80.</p>
