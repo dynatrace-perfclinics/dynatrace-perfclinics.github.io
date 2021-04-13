@@ -121,13 +121,12 @@ DT_PAAS_TOKEN=
 <h2 is-upgraded>Make it executable</h2>
 <pre><code>chmod +x ubuntu-setup-easytravel.sh
 </code></pre>
-<h2 is-upgraded>Execute the script interactive</h2>
+<h2 is-upgraded>Execute the script</h2>
 <pre><code>sudo bash ubuntu-setup-easytravel.sh -i
 </code></pre>
-<h2 is-upgraded>Execute the script in the background</h2>
-<pre><code>sudo bash -c &#39;./ubuntu-setup-easytravel.sh &amp;&#39;
-</code></pre>
-<p>run the command as root for installing also utils as docker, in the VM you have a docker server where you can spin containers also easily. The script will install easytravel start it and it will also install the BankJob (a java app for learning how the basline of Davis works) and an NGINX reverse proxy that routes the traffic of EasyTravel Angular to port 80.</p>
+<aside class="warning"><p>You can also execute the script and send it to the background like this<br><code>sudo bash -c &#39;./ubuntu-setup-easytravel.sh &amp;&#39;</code></p>
+</aside>
+<p>The command needs sudo rights for installing also utils as docker so you can spin containers in an instant. The script will install easytravel, start it and it will also install the BankJob (a java app for learning how the basline of Davis works) and an NGINX reverse proxy that routes the traffic of all the EasyTravel apps to HTTP. Using a magic ip and subdomains all easytravel apps will be exposed.</p>
 <p>Why run it in the background and where is the output of the program you say? Well, this script is actually optimized to be executed for non-interactive shells at the initialization of an instance. This is done programatically passing the script as <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html" target="_blank">user data</a> while creating dynatrace environments and spininning multiple instances for each student. This is achieved with the <a href="https://github.com/sergiohinojosa/Dynatrace-REST-Tenant-Automation" target="_blank">Dynatrace Rest Tenant Automation</a> programm. Yes, we love ❤️ automation 🤖and the customization, creation and configuration of environments and instances is done programatically.</p>
 <h2 is-upgraded>🔍Inspect the script at runtime</h2>
 <p>This is optional just for you to know where the output of Easytravel is being piped out. Each Easytravel component writes is logs. You can check them on the Admin console of Easytravel<br>To inspect how the installation is going, type</p>
@@ -172,16 +171,23 @@ installation done
       </google-codelab-step>
     
       <google-codelab-step label="Access endpoints" duration="1">
-        <h2 is-upgraded>http://easytravel</h2>
+        <aside class="special"><p>You&#39;ll be able to access all services of Easytravel with one port and one IP. This is done using virtual hosts and a magic 🧙‍♂️ domain with <a href="https://nip.io" target="_blank">nip.io</a>. Doesn&#39;t matter if is  <code>127.0.0.1</code> or something like <code>192.168.0.1</code> or a public one. The NGINX ReverseProxy (running in a container) will match the subdomain (classic/rest/admin) and route the traffic accordingly.</p>
+</aside>
+<p>By default at installation the script will fill the DOMAIN variable with <code>curl ifconfig.me</code>  to get the public IP since easytravel classic has some 3rdparty content servers where you can analyze with the RUM capabilities of Dynatrace the impact of 3rd party resources.</p>
+<h2 is-upgraded>http://127.0.0.1.nip.io</h2>
 <p class="image-container"><img alt="drawing" style="width: 350.00px" src="img/6f7da9a1906c3e86.png"></p>
-<h2 is-upgraded>http://easytravel/classic</h2>
+<h2 is-upgraded>http://classic.127.0.0.1.nip.io</h2>
 <aside class="warning"><p>Use port 8079 if you do a session booking or a loadtest. Classic does not like to be rewritten over a proxy. If you know how to solve this, please submit a PR.</p>
 </aside>
 <p class="image-container"><img alt="drawing" style="width: 350.00px" src="img/bdeb684fb99f5b6e.png"></p>
-<h2 is-upgraded>http://easytravel/admin</h2>
+<h2 is-upgraded>http://admin.127.0.0.1.nip.io</h2>
 <p class="image-container"><img alt="drawing" style="width: 350.00px" src="img/f0a3c0f65a2120ca.png"></p>
-<h2 is-upgraded>http://easytravel/amp</h2>
+<h2 is-upgraded>http://classic.127.0.0.1.nip.io/amp</h2>
 <p class="image-container"><img alt="drawing" style="width: 350.00px" src="img/cf5bd594d821bfd7.png"></p>
+<h2 is-upgraded>http://rest.127.0.0.1.nip.io</h2>
+<p>REST Server to activate/deactivate feature flags, problem patterns and deployments remotely.</p>
+<aside class="special"><p>ProTip. If you want to simulate multiple servers, just add the IP and the hostname to your /etc/host file so you can call <a href="." target="_blank">http://easytravel</a>, <a href="." target="_blank">http://classic</a> or <a href="." target="_blank">http://admin.easytravel</a> ...</p>
+</aside>
 
 
       </google-codelab-step>
@@ -194,7 +200,7 @@ installation done
 </code></pre>
 <h2 is-upgraded>Start easyTravel as UBUNTU (not root)</h2>
 <p>If you happen to install easytravel as root, you might want to change recursively all the rights of the easytravel installation folder so all processes can run properly</p>
-<pre><code>sh /home/ubuntu/easytravel-2.0.0-x64/weblauncher/weblauncher.sh &gt; /tmp/weblauncher.log 2&gt;&amp;1 &amp;
+<pre><code>sudo bash ubuntu-setup-easytravel.sh -s
 </code></pre>
 <h2 is-upgraded>Fix easyTravel rights</h2>
 <pre><code>chmod 755 -R /home/ubuntu/easytravel-2.0.0-x64/
@@ -206,8 +212,7 @@ installation done
 <pre><code>ps -aux | grep -i easytravel
 </code></pre>
 <h2 is-upgraded>Restart all with a one-liner (must be root)</h2>
-<pre><code>sudo su;
-killall java; docker start reverseproxy bankjob; USER=ubuntu; su -c &#34;sh /home/$USER/easytravel-2.0.0-x64/weblauncher/weblauncher.sh &gt; /tmp/weblauncher.log 2&gt;&amp;1 &amp;&#34; $USER
+<pre><code>sudo bash ubuntu-setup-easytravel.sh -k
 </code></pre>
 
 

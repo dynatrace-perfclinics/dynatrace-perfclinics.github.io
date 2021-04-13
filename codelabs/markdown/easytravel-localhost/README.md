@@ -38,7 +38,6 @@ Positive
 | Optional   |     ○      |
 
 
-
 ## Get your VM ( ○ Multipass)
 Duration: 5
 
@@ -132,16 +131,17 @@ DT_PAAS_TOKEN=
 chmod +x ubuntu-setup-easytravel.sh
 ```
 
-### Execute the script interactive
+### Execute the script
 ```bash
 sudo bash ubuntu-setup-easytravel.sh -i
 ```
 
-### Execute the script in the background
-```bash
-sudo bash -c './ubuntu-setup-easytravel.sh &'
-```
-> run the command as root for installing also utils as docker, in the VM you have a docker server where you can spin containers also easily. The script will install easytravel start it and it will also install the BankJob (a java app for learning how the basline of Davis works) and an NGINX reverse proxy that routes the traffic of EasyTravel Angular to port 80.
+Negative
+: You can also execute the script and send it to the background like this 
+`sudo bash -c './ubuntu-setup-easytravel.sh &' `
+
+
+> The command needs sudo rights for installing also utils as docker so you can spin containers in an instant. The script will install easytravel, start it and it will also install the BankJob (a java app for learning how the basline of Davis works) and an NGINX reverse proxy that routes the traffic of all the EasyTravel apps to HTTP. Using a magic ip and subdomains all easytravel apps will be exposed. 
 
 Why run it in the background and where is the output of the program you say? Well, this script is actually optimized to be executed for non-interactive shells at the initialization of an instance. This is done programatically passing the script as [user data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) while creating dynatrace environments and spininning multiple instances for each student. This is achieved with the [Dynatrace Rest Tenant Automation](https://github.com/sergiohinojosa/Dynatrace-REST-Tenant-Automation) programm. Yes, we love ❤️ automation 🤖and the customization, creation and configuration of environments and instances is done programatically.
 
@@ -201,23 +201,35 @@ Negative
 ## Access endpoints
 Duration: 1
 
-### http://easytravel
+Positive
+: You'll be able to access all services of Easytravel with one port and one IP. This is done using virtual hosts and a magic 🧙‍♂️ domain with [nip.io](https://nip.io). Doesn't matter if is  `127.0.0.1` or something like `192.168.0.1` or a public one. The NGINX ReverseProxy (running in a container) will match the subdomain (classic/rest/admin) and route the traffic accordingly.
+
+
+By default at installation the script will fill the DOMAIN variable with `curl ifconfig.me`  to get the public IP since easytravel classic has some 3rdparty content servers where you can analyze with the RUM capabilities of Dynatrace the impact of 3rd party resources.
+
+### http://127.0.0.1.nip.io
 <img src="img/angular.png" alt="drawing" width="350"/>
 
-### http://easytravel/classic
+### http://classic.127.0.0.1.nip.io
 Negative
 : Use port 8079 if you do a session booking or a loadtest. Classic does not like to be rewritten over a proxy. If you know how to solve this, please submit a PR.
 
 <img src="img/classic.png" alt="drawing" width="350"/>
 
-### http://easytravel/admin
+### http://admin.127.0.0.1.nip.io
 
 <img src="img/admin.png" alt="drawing" width="350"/>
 
-### http://easytravel/amp
-
+### http://classic.127.0.0.1.nip.io/amp
 <img src="img/amp.png" alt="drawing" width="350"/>
 
+
+### http://rest.127.0.0.1.nip.io
+REST Server to activate/deactivate feature flags, problem patterns and deployments remotely.
+
+
+Positive
+: ProTip. If you want to simulate multiple servers, just add the IP and the hostname to your /etc/host file so you can call [http://easytravel](.), [http://classic](.) or [http://admin.easytravel](.) ...
 
 ## Troublehooting 
 Duration: 5
@@ -233,7 +245,7 @@ ps -ef | grep -i easytravel | awk '{print "sudo kill -9 "$2}' | sh
 ### Start easyTravel as UBUNTU (not root)	
 > If you happen to install easytravel as root, you might want to change recursively all the rights of the easytravel installation folder so all processes can run properly
 ```bash
-sh /home/ubuntu/easytravel-2.0.0-x64/weblauncher/weblauncher.sh > /tmp/weblauncher.log 2>&1 &
+sudo bash ubuntu-setup-easytravel.sh -s
 ```
 
 ### Fix easyTravel rights
@@ -253,8 +265,7 @@ ps -aux | grep -i easytravel
 
 ### Restart all with a one-liner (must be root)
 ```bash
-sudo su;
-killall java; docker start reverseproxy bankjob; USER=ubuntu; su -c "sh /home/$USER/easytravel-2.0.0-x64/weblauncher/weblauncher.sh > /tmp/weblauncher.log 2>&1 &" $USER
+sudo bash ubuntu-setup-easytravel.sh -k
 ```
 
 ## Tips & Links
@@ -270,10 +281,11 @@ For RUM to work properly (for the classic app e.g. Loadgenerator) you need to di
 On the entity select edit...
 <img src="img/disable_launcher_process_monitoring1.png" alt="drawing" width="500"/>
 
-
 Then disable monitoring for that process group instance...
 <img src="img/disable_launcher_process_monitoring2.png" alt="drawing" width="500"/>
 
 ### easyTravel documentation
 [https://confluence.dynatrace.com/community/display/DL/easyTravel](https://confluence.dynatrace.com/community/display/DL/easyTravel)
+
+
 
