@@ -96,7 +96,7 @@ DT_PAAS_TOKEN=
 ```
 ### Execute the script
 ```bash
-sudo bash -c './ubuntu-setup-easytravel.sh &'
+sudo bash ubuntu-setup-easytravel.sh -i
 ```
 
 Positive
