@@ -223,10 +223,10 @@ Negative
 ### http://classic.127.0.0.1.nip.io/amp
 <img src="img/amp.png" alt="drawing" width="350"/>
 
-
 ### http://rest.127.0.0.1.nip.io
-REST Server to activate/deactivate feature flags, problem patterns and deployments remotely.
+<img src="img/rest.png" alt="drawing" width="350"/>
 
+Internal REST Services of EasyTravel as well as a the Configuration REST Service to activate/deactivate feature flags, problem patterns and deployments remotely.
 
 Positive
 : ProTip. If you want to simulate multiple servers, just add the IP and the hostname to your /etc/host file so you can call [http://easytravel](.), [http://classic](.) or [http://admin.easytravel](.) ...
