@@ -211,9 +211,6 @@ By default at installation the script will fill the DOMAIN variable with `curl i
 <img src="img/angular.png" alt="drawing" width="350"/>
 
 ### http://classic.127.0.0.1.nip.io
-Negative
-: Use port 8079 if you do a session booking or a loadtest. Classic does not like to be rewritten over a proxy. If you know how to solve this, please submit a PR.
-
 <img src="img/classic.png" alt="drawing" width="350"/>
 
 ### http://admin.127.0.0.1.nip.io
