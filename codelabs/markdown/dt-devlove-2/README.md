@@ -37,13 +37,59 @@ Positive
 
 ## Automating Tests and Validations with Synthetic Monitoring
 
+Positive
+: Andy and Sergio will explain this section in detail in the Live Webinar.
+
+![keptn-in-a-box](./img/test1.png)
+
+
 ## REST Sign-In Validation & Availability with Dynatrace
+
+Positive
+: Andy and Sergio will explain this section in detail in the Live Webinar.
+
+![keptn-in-a-box](./img/test2.png)
 
 ## Full Booking Browser Test, Validation & Availability with Dynatrace
 
+Positive
+: Andy and Sergio will explain this section in detail in the Live Webinar.
+
+![keptn-in-a-box](./img/test3.png)
+
+
+![keptn-in-a-box](./img/test4.png)
+
+
+
 ## Intelligent Quality Gates
 
-## The Set-Up
+Positive
+: Andy and Sergio will explain this section in detail in the Live Webinar.
+
+
+![keptn-in-a-box](./img/iqg1.png)
+
+
+![keptn-in-a-box](./img/iqg2.png)
+
+
+![keptn-in-a-box](./img/iqg3.png)
+
+
+![keptn-in-a-box](./img/iqg5.png)
+
+
+![keptn-in-a-box](./img/iqg6.jpg)
+
+
+![keptn-in-a-box](./img/iqg7.jpg)
+
+
+## The CICD with QualityGate SetUp
+
+![systems](./img/pipeline-simple-flow.jpg)
+
 
 ![systems](./img/systems.jpg)
 
@@ -319,7 +365,7 @@ Positive
 : You will trigger the first build and also subsequent builds since this pipeline has a cron job for the starting of each hour. Depending on the time the pipeline will set up a different problem pattern or feature flag and trigger the **easytravel-continuous-deployment** pipeline. We are simulating Developers being Developers pushing a different code base and we will load test each release and evaluate it with the quality gate.   
 
 If you go back to your Loadtesting Dashboard in Dynatrace you'll notice that all the Loadtest are tracked automatically. How cool 😎 is that? We have set up now a continuous unbreakable pipeline with **Performance as a Service** and **Intelligent Quality Gates**.
-
+     
 ![This](img/cicddashboard_full.png)
 
 
