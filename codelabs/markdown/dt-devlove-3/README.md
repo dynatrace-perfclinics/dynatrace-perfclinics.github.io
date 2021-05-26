@@ -16,5 +16,10 @@ Positive
 : Stay tuned 📺 for Episode 3
 
 
+<!-- 
+Positive:[Register now for Episode 2 - Intelligent Quality Gates](https://dynatr.ac/2PbOB3M)    
+[Streaming live 📺 on Thursday, May 20th 4pm BST / 5pm CEST / 11am ET](https://dynatr.ac/2PbOB3M) - Bring your questions 🙋‍♂️
+-->
+
 ### Abstract of Episode 3
 In this Episode we will compare failed releases that did not pass the QualityGate due performance degradations. We will learn how to compare functional performance tests with each other learning how Dynatrace can pinpoint the degradations up to code-level and we will even decompile the code to understand the bad implementation. One release has a bad calculation implementation and the other a synchronisation issue.

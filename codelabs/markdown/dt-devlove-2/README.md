@@ -10,29 +10,32 @@ Analytics Account: UA-193960361-1
 ## Introduction 
 Duration: 10
 
-Positive
-: [Register now for Episode 2 - Intelligent Quality Gates](https://dynatr.ac/2PbOB3M)    
-[Streaming live 📺 on Thursday, May 20th 4pm BST / 5pm CEST / 11am ET](https://dynatr.ac/2PbOB3M) - Bring your questions 🙋‍♂️
+
 
 
 Positive
 : ***In this Developer Webinar Series we want to bring you from Zero 👶 to Hero 🦸 from Diagnosing Transactions and releases with Dynatrace to building unbreakable delivery pipelines with automatic performance tests and release validation alongside fullstack comparison.***
 
+**Watch the recording of Episode 2 on YouTube!**
+
+![https://www.youtube.com/watch?v=soInYUkM72o](.)
+
+
 
 We will level up our manual testing with continuous validations with the help of Synthetic Testing. Testing REST Microservices and FullBrowser evaluations and tests we **make sure** that the key functionalities we developed works as designed and expected in every release and stage automatically. 
 
-![This](img/agenda.png)
 
-Performance Problems, Scalability issues and Optimizations can be unveiled under load 🔥. Exactly where the application is needed the most (under load) is where it should NOT fail. It’s important to unveil the limits of each application, understand if it can scale horizontally and/or vertically so it can be sized properly and not waste resources (money) just because of not knowing the limits of a system. This is why automated quality gates with automated performance testing, validation and release comparison is so important. Make sure automatically that every release works, every important KPI is fulfilled such as business, architecture, infrastructure and performance SLOs (Service Level Objectives) by every pull requests or merge on a branch. We will understand how the Quality Gate works, how the Load test is automatically integrated in Dynatrace and how all systems such as AzureDevOps, the application, Keptn and Dynatrace form an ecosystem and are tight together.
-In this Episode we will explain the CICD environment, the QualityGates, the session-based load test, the SLI/SLOs and best practices on them such as validate the end2end functionality of a system, the vertical stack and shift business KPIs into the validation. We will also learn how the integration works and the foundations of loadtest analysis with Dynatrace.
+>In Episode 2 of this Performance Clinic Series, we will set up a continuous CICD Pipeline with an automatic & Intelligent QualityGate. We want to simulate on every git merge or git commit on a branch to automate performance tests with a Full-Stack End-End Evaluation of each release.
+
+![This](img/e2-teaser.gif)
 
 
 Positive
 : This systematic and generic approach can be applied to any software that Dynatrace monitors and any CI/CD pipeline that our customers may use, meaning we can speed up 🚀 their delivery up to 80% while ensuring the functionality and a higher level of quality of their released software ✅.
 
->In Episode 2 of this Performance Clinic Series, we will set up a continuous CICD Pipeline with an automatic & Intelligent QualityGate. We want to simulate on every git merge or git commit on a branch to automate performance tests with a Full-Stack End-End Evaluation of each release.
 
-![keptn-in-a-box](./img/keptn-in-a-box-autonomous-cloud-devops.gif)
+Performance Problems, Scalability issues and Optimizations can be unveiled under load 🔥. Exactly where the application is needed the most (under load) is where it should NOT fail. It’s important to unveil the limits of each application, understand if it can scale horizontally and/or vertically so it can be sized properly and not waste resources (money) just because of not knowing the limits of a system. This is why automated quality gates with automated performance testing, validation and release comparison is so important. Make sure automatically that every release works, every important KPI is fulfilled such as business, architecture, infrastructure and performance SLOs (Service Level Objectives) by every pull requests or merge on a branch. We will understand how the Quality Gate works, how the Load test is automatically integrated in Dynatrace and how all systems such as AzureDevOps, the application, Keptn and Dynatrace form an ecosystem and are tight together.
+In this Episode we will explain the CICD environment, the QualityGates, the session-based load test, the SLI/SLOs and best practices on them such as validate the end2end functionality of a system, the vertical stack and shift business KPIs into the validation. We will also learn how the integration works and the foundations of loadtest analysis with Dynatrace.
 
 
 ## Automating Tests and Validations with Synthetic Monitoring
@@ -369,3 +372,5 @@ If you go back to your Loadtesting Dashboard in Dynatrace you'll notice that all
 ![This](img/cicddashboard_full.png)
 
 
+Positive
+: Analysing loadtest or comparing loadtests (releases) with each other and pinpoint performance degradations and code changes to codelevel continue with [Episode 3](/codelabs/why-devs-love-dynatrace-3/)
