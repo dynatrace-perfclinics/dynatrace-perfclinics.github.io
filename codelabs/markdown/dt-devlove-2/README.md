@@ -127,7 +127,7 @@ ssh yourusername@the-bind-ip-or-dns
 #### Download `keptn-in-a-box.sh`
 Now let's download the `keptn-in-a-box.sh` file and make it executable.
 ```bash
-curl -O https://raw.githubusercontent.com/keptn-sandbox/keptn-in-a-box/release-0.8.2/keptn-in-a-box.sh
+curl -O https://raw.githubusercontent.com/keptn-sandbox/keptn-in-a-box/release-0.8.3/keptn-in-a-box.sh
 chmod +x keptn-in-a-box.sh
 ```
 ### Enter your Dynatrace Credentials
@@ -225,7 +225,7 @@ GIT-Server: http://git.18-130-223-69.nip.io
 [Keptn-In-A-Box|INFO]|>->-> ssh student@18-130-223-01.nip.io <-<-<|
 [Keptn-In-A-Box|INFO]|>->-> Password: secr3t <-<-<|
 [Keptn-In-A-Box|INFO]|======================================================================
-[Keptn-In-A-Box|INFO]|============ Keptn in a Box release-0.8.2 installation finished. ============
+[Keptn-In-A-Box|INFO]|============ Keptn in a Box release-0.8.3 installation finished. ============
 [Keptn-In-A-Box|INFO]|______________________________________________________________________
 [Keptn-In-A-Box|INFO]|>->-> Good luck in your Autonomous Cloud Journey!! <-<-<|
 [Keptn-In-A-Box|INFO]|>->-> If you faced an issue or just want to say hi, come by @ https://keptn.slack.com/ <-<-<|
