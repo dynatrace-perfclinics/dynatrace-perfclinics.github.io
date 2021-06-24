@@ -33,6 +33,21 @@
 <h2 is-upgraded>Abstract of Episode 3</h2>
 <p>In the previous episodes you learned how Dynatrace automates observability from Dev to Ops environments, how to analyze distributed traces on real time (we call them PurePaths) to detect code or performance hotspots and how to automate code evaluation as part of your development process and delivery pipelines. You learned about automated performance validation and release comparison through intelligent quality gates and were introduced into the concepts of SLOs (Service Level Objectives).</p>
 <p>On Episode 3 will learn the foundations of Load Test Analysis with Dynatrace. We will compare failed releases that did not pass the Quality Gate due performance degradations. We will show how easy it is to compare functional performance tests with each other learning how Dynatrace can pinpoint the degradations up to code-level through the application stack. We will even decompile the code to understand the root cause of a bad implementation whether it is a bad algorithm or thread synchronization issue.</p>
+<h2 is-upgraded>Live Hands-On for Episode 3</h2>
+<p>All the steps done during the Webinar will be uploaded to this codelab. The powerpoint will be available (like the past episodes) in the <a href="https://university.dynatrace.com/" target="_blank">Dynatrace University 🧑‍🎓</a>.</p>
+<aside class="warning"><p>For following along you need to have the CICD environment setup with the endless pipeline active running through the Intelligent QualityGate. Below are the steps to update your monaco configuration. Just some links to the loadtesting dashboard will be updated.</p>
+</aside>
+<h2 is-upgraded>Update the GIT Repo containing the monaco configuration</h2>
+<pre><code>git pull
+</code></pre>
+<h2 is-upgraded>Load the variables in the shell</h2>
+<pre><code>source set_dt_variables.sh
+</code></pre>
+<h2 is-upgraded>Execute Monaco</h2>
+<pre><code>monaco deploy -e environment.yaml -v
+</code></pre>
+<aside class="special"><p>If you don&#39;t have a CICD Environment of your own, we will provide during the Webinar a live access to a Dynatrace cluster so you can follow along.</p>
+</aside>
 
 
       </google-codelab-step>
