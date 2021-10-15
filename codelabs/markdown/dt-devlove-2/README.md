@@ -127,7 +127,7 @@ ssh yourusername@the-bind-ip-or-dns
 #### Download `keptn-in-a-box.sh`
 Now let's download the `keptn-in-a-box.sh` file and make it executable.
 ```bash
-curl -O https://raw.githubusercontent.com/keptn-sandbox/keptn-in-a-box/release-0.8.3/keptn-in-a-box.sh
+curl -O https://raw.githubusercontent.com/keptn-sandbox/keptn-in-a-box/release-0.9.2/keptn-in-a-box.sh
 chmod +x keptn-in-a-box.sh
 ```
 ### Enter your Dynatrace Credentials
@@ -333,7 +333,7 @@ On the top left there is a link to your Jenkins server. Click on it.
 The login credentials to your Jenkins server are:
 ```bash
 Username: keptn
-Password: keptn#R0cks
+Password: keptn
 ```
 
 After you have entered your server, click on "Install suggested plugins" 
